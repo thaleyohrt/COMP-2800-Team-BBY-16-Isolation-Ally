@@ -18,7 +18,7 @@
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
 
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -33,13 +33,13 @@
 
     <div id="container">
         <h1>Main Menu</h1>
-        <div id="buttons">
-            <button type="button" onclick="loadGame()">Play</button>
-            <button type="button" onclick="loadLeaderboard()">Leaderboard</button>
-            <button type="button" onclick="loadAchievementList()">Achievements</button>
-            <button type="button" onclick="logout()">Quit</button>
-            <button type="button" onclick="loadHelp()">Help</button>
-        </div>
+        <ul id ="buttons">
+            <li><button type="button" onclick="loadGame()" id ="play">Play</button></li>
+            <li><button type="button" onclick="loadLeaderboard()">Leaderboard</button></li>
+            <li><button type="button" onclick="loadAchievementList()">Achievements</button></li>
+            <li><button type="button" onclick="logout()">Quit</button></li>
+            <li><button type="button" onclick="loadHelp()">Help</button></li>
+        </ul>
     </div>
 
     <!----------------------------------------------->
