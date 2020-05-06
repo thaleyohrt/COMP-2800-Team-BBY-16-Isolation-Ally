@@ -52,6 +52,11 @@ function logout() {
     });
 }
 
+//load main
+function loadMain() {
+    document.location.href = "menu.html";
+}
+
 //load game
 function loadGame() {
     document.location.href = "game.html";
