@@ -76,3 +76,8 @@ function loadAchievementList() {
 function loadHelp() {
     document.location.href = "help.html";
 }
+
+//load about-us
+function loadAbout() {
+    document.location.href = "about-us.html";
+}
