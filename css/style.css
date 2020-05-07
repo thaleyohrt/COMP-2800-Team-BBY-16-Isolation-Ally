@@ -6,3 +6,7 @@
 #placements {
     max-width: 80vh;
 }
+
+.jumbotron h1 {
+    margin-right: 50px;
+}
