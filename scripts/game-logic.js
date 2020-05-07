@@ -1,6 +1,6 @@
+$("body").css("overflow", "hidden");
 var config = {
     type: Phaser.AUTO,
-    parent: 'phaser-example',
     width: 800,
     height: 600,
     scene: {
@@ -10,8 +10,20 @@ var config = {
     }
 };
 
+var game = new Phaser.Game(config);
 
-function startGame(){
-    document.body.style.backgroundImage = "url('images/Road-Background.png')";
-    document.body.style.backgroundSize = "cover";
+function preload()
+{
+    this.load.image('road', 'images/Road-Background.png');
+}
+
+function create ()
+{
+    game.scale.resize(window.innerWidth, window.innerHeight);
+    this.add.image((window.innerWidth / 2), (window.innerHeight / 2), 'road');
+}
+
+function update ()
+{
+
 }
