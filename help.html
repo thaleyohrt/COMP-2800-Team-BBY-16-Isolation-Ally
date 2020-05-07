@@ -21,6 +21,7 @@
     <!-- Your own CSS files -->
     <!------------------------>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -35,7 +36,11 @@
 
     <div class="container">
         <div class="jumbotron">
+            <button type="button" class="btn btn-outline-secondary btn-sm back-button" onclick="loadMain()">
+                <img src="images/back-arrow.png" width="32px">
+            </button>
             <h1 class="text-center">How to Play</h1>
+            
         </div>
         <div class="card-deck">
             <div class="card mb-4 bg-primary text-white">
@@ -54,10 +59,12 @@
                     <h4 class="card-title">Be Smart!</h4>
                 </div>
                 <div class="card-body text-center">
-                    <p class="card-text">Collect hand sanitizer and other powerups to increase your health (and your score!)</p>
+                    <p class="card-text">Collect hand sanitizer and other powerups to increase your health (and your
+                        score!)</p>
                 </div>
             </div>
-            <div class="w-100 d-none d-sm-block d-md-block d-lg-none"></div> <!--Wraps at this point when you shrink the screen.-->
+            <div class="w-100 d-none d-sm-block d-md-block d-lg-none"></div>
+            <!--Wraps at this point when you shrink the screen.-->
             <div class="card mb-4 bg-warning text-white">
                 <img class="card-img-top" src="images/pacman-example.jpg" alt="Card image">
                 <div class="card-header text-center">
@@ -73,7 +80,8 @@
                     <h4 class="card-title">Stay Healthy!</h4>
                 </div>
                 <div class="card-body text-center">
-                    <p class="card-text">If your health reaches zero, it's Game Over. In both the game and in real life.</p>
+                    <p class="card-text">If your health reaches zero, it's Game Over. In both the game and in real life.
+                    </p>
                 </div>
             </div>
         </div>
