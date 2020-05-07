@@ -7,6 +7,50 @@
     max-width: 80vh;
 }
 
-.jumbotron h1 {
-    margin-right: 50px;
+.achievement-list-item {
+    margin-top:20px;
+    margin-left:10%;
+    margin-right:10%;
+    padding:20px;
+    border-radius:10px;
+}
+.achievement-list-img{
+    float:left;
+    height:100px;
+    width:100px;
+    margin-right:20px;
+}
+.achievement-list-title {
+    margin-bottom:0;
+    float:left;
+}
+.description{
+    margin-top:40px;
+    text-align: left;
+}
+@media (max-width: 480px){
+    .achievement-list-title {
+        font-size:1.5rem;
+    }
+    .description {
+        font-size:10pt;
+    }
+}
+@media(max-width:400px){
+    .achievement-list-title {
+        font-size:1.2rem;
+    }
+    .achievement-img {
+        width: 60px;
+        height:60px;
+    }
+    .description {
+        font-size:10pt;
+    }
+}
+
+@media (min-width: 420px) {
+    .jumbotron h1 {
+        margin-right: 50px;
+    }
 }

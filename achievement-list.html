@@ -18,7 +18,7 @@
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
-    <link rel="stylesheet" href="css/achieveListStyle.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -32,28 +32,26 @@
 
     <div class ="container">
         <div class="jumbotron">
+            <button type="button" class="btn btn-outline-secondary btn-sm float-left" onclick="loadMain()">
+                <img src="images/back-arrow.png" width="32px">
+              </button>
             <h1 class="text-center">Achievements</h1>
             <p class="text-center">Useful information for player earned goals</p>
         </div>
         <form action="achievement.html">
-            <button>
-                <img src ="https://dummyimage.com/60x60/000/fff">
-                <h2>Achievement1</h2>
+            <button class="achievement-list-item">
+                <img class="achievement-list-img" src ="https://dummyimage.com/60x60/000/fff">
+                <h2 class="achievement-list-title">Achievement1</h2>
                 <p class="description">The description. The description. The description. The description. The description. The description. The description. The description. The description.</p>
             </button>
         </form>
         <form action="achievement.html">
-            <button>
-                <img src ="https://dummyimage.com/60x60/000/fff">
-                <h2>Achievement2</h2>
+            <button class="achievement-list-item">
+                <img class="achievement-list-img" src ="https://dummyimage.com/60x60/000/fff">
+                <h2 class="achievement-list-title">Achievement2</h2>
                 <p class="description">The description. The description. The description. The description. The description. The description. The description. The description. The description.</p>
             </button>
         </form>
-        
-    </div>
-
-    <div class="container">
-        <button type="button" onclick="loadMain()">return</button>
     </div>
 
     <!----------------------------------------------->
