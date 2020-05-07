@@ -12,6 +12,9 @@ var config = {
 
 var game = new Phaser.Game(config);
 
+var w = window.innerWidth ; //width
+var h = window.innerHeight; //height
+
 function preload()
 {
     this.load.image('road', 'images/Road-Background.png');
@@ -20,8 +23,8 @@ function preload()
 
 function create ()
 {
-    game.scale.resize(window.innerWidth, window.innerHeight);
-    this.add.image((window.innerWidth / 2), (window.innerHeight / 2), 'road');
+    game.scale.resize(w, h);
+    this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h);
     addPlayer(this);
 }
 
