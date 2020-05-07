@@ -15,12 +15,14 @@ var game = new Phaser.Game(config);
 function preload()
 {
     this.load.image('road', 'images/Road-Background.png');
+    loadPlayerAssets(this);
 }
 
 function create ()
 {
     game.scale.resize(window.innerWidth, window.innerHeight);
     this.add.image((window.innerWidth / 2), (window.innerHeight / 2), 'road');
+    addPlayer(this);
 }
 
 function update ()
