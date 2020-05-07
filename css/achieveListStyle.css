@@ -1,7 +1,4 @@
-h1{
-    padding-left:15px;
-    font-size:3rem;
-}
+
 button{
     margin-top:20px;
     margin-left:10%;
@@ -19,7 +16,7 @@ h2{
     margin-bottom:0;
     float:left;
 }
-p{
+.description{
     margin-top:40px;
     text-align: left;
 }
