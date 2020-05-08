@@ -8,7 +8,14 @@ function login() {
         var errorMessage = error.message;
         alert(errorMessage);
     }).then(function (){
-        document.location.href = "menu.html";
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user){
+                document.location.href = "menu.html";
+            } else {
+                console.log("Enter you info");
+            }
+        });
+        
     });
 }
 
