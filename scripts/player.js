@@ -1,5 +1,5 @@
 var positions = [0, 1, 2];
-var positionCoords = [window.innerWidth / 9, window.innerWidth / 2, window.innerWidth / 1.13];
+var positionCoords = [window.innerWidth / 5, window.innerWidth / 2, window.innerWidth / 1.25];
 
 function loadPlayerAssets(main) {
     main.load.image('player', 'images/john.jpg');
