@@ -1,4 +1,5 @@
 $("body").css("overflow", "hidden");
+let back = [];
 var config = {
     type: Phaser.AUTO,
     width: 800,
@@ -12,6 +13,9 @@ var config = {
 
 var game = new Phaser.Game(config);
 
+var w = window.innerWidth ; //width
+var h = window.innerHeight; //height
+
 function preload()
 {
 
@@ -22,17 +26,20 @@ function preload()
 
 function create ()
 {
-    this.anims.create({
-        key: 'guy',
-        frames: TouchList.anims.generateFrameNumbers('player', {start: 0, end:1 }),
-        frameRate:2,
-        repeat: -1
-    }); 
-    this.add.image((window.innerWidth / 2), (window.innerHeight / 2), 'road');
+    game.scale.resize(w, h);
+    back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h + 3);
+    back[1] = this.add.image((w / 2), -(h / 2), 'road').setDisplaySize(w, h + 3);
     addPlayer(this);
 }
 
 function update ()
 {
-
+    back[1].y += 5;
+    back[0].y += 5;
+    if (back[0].y >= h * 1.5){
+        back[0].y = -(h / 2);
+    }
+    if (back[1].y >= h * 1.5){
+        back[1].y = -(h / 2);
+    }
 }
