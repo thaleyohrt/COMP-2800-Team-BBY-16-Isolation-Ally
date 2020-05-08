@@ -21,6 +21,7 @@ function preload()
 {
     this.load.image('road', 'images/Road-Background.png');
     loadPlayerAssets(this);
+    loadEnemyAssets(this);
 }
 
 function create ()
@@ -29,6 +30,7 @@ function create ()
     back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h + 3);
     back[1] = this.add.image((w / 2), -(h / 2), 'road').setDisplaySize(w, h + 3);
     addPlayer(this);
+    
 }
 
 function update ()
@@ -41,4 +43,6 @@ function update ()
     if (back[1].y >= h * 1.5){
         back[1].y = -(h / 2);
     }
+    spawnEnemies(this);
+    moveEnemies(enemyObjects);
 }
