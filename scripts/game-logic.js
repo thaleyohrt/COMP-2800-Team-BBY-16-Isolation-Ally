@@ -31,14 +31,11 @@ let config = {
 let game = new Phaser.Game(config);
 
 function preload() {
-var speed = 5; //game speed
     this.load.image('road', 'images/Road-Background.png');
     loadPlayerAssets(this);
-    loadEnemyAssets(this);
 }
 
 function create() {
-
     game.scale.resize(w, h);
     back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h + 3);
     back[1] = this.add.image((w / 2), -(h / 2), 'road').setDisplaySize(w, h + 3);
@@ -51,15 +48,12 @@ function create() {
 function update() {
     num++;
     score.setText("Score: " + (num / 10).toFixed(1) + "ft");
-    back[1].y += speed;
-    back[0].y += speed;
-
+    back[1].y += 5;
+    back[0].y += 5;
     if (back[0].y >= h * 1.5) {
         back[0].y = -(h / 2);
     }
     if (back[1].y >= h * 1.5) {
         back[1].y = -(h / 2);
     }
-    spawnEnemies(this);
-    moveEnemies(enemyObjects);
 }

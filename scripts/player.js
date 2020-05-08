@@ -2,7 +2,7 @@ let positions = [0, 1, 2];
 let positionCoords = [window.innerWidth / 5, window.innerWidth / 2, window.innerWidth / 1.25];
 
 function loadPlayerAssets(main) {
-    main.load.image('player', 'images/samplePlayer.png');
+    main.load.image('player', 'images/john.jpg');
 }
 
 function addPlayer(main) {
