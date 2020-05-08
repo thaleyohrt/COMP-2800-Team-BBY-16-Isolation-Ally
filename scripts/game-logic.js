@@ -15,6 +15,7 @@ var game = new Phaser.Game(config);
 
 var w = window.innerWidth ; //width
 var h = window.innerHeight; //height
+var speed = 5; //game speed
 
 function preload()
 {
@@ -32,8 +33,8 @@ function create ()
 
 function update ()
 {
-    back[1].y += 5;
-    back[0].y += 5;
+    back[1].y += speed;
+    back[0].y += speed;
     if (back[0].y >= h * 1.5){
         back[0].y = -(h / 2);
     }
