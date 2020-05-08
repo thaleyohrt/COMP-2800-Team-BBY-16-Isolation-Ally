@@ -25,8 +25,8 @@ function preload()
 function create ()
 {
     game.scale.resize(w, h);
-    back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h);
-    back[1] = this.add.image((w / 2), -(h / 2), 'road').setDisplaySize(w, h);
+    back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h + 3);
+    back[1] = this.add.image((w / 2), -(h / 2), 'road').setDisplaySize(w, h + 3);
     addPlayer(this);
 }
 
