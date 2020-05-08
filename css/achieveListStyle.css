@@ -1,0 +1,58 @@
+h1{
+    text-align:center;
+}
+.achievementItem{
+    margin-top:20px;
+    margin-left:10%;
+    margin-right:10%;
+    padding:20px;
+    border-radius:10px;
+}
+#back{
+    color:rgb(94,94,94);
+    background-color: rgb(207, 207, 207);
+    padding-top:8px;
+    padding-left:17px;
+    padding-right:17px;
+    padding-bottom:19px;
+    border-radius: 50%;
+    font-size: 30pt;
+    display:inline-block;
+    line-height:0.5;
+    transform:translate(30px, 30px);
+    position:fixed;
+}
+img{
+    float:left;
+    height:100px;
+    width:100px;
+    margin-right:20px;
+}
+h2{
+    margin-bottom:0;
+    float:left;
+}
+p{
+    margin-top:40px;
+    text-align: left;
+}
+@media (max-width: 480px){
+    h2{
+        font-size:1.5rem;
+    }
+    p{
+        font-size:10pt;
+    }
+}
+@media(max-width:400px){
+    h2{
+        font-size:1.2rem;
+    }
+    img{
+        width: 60px;
+        height:60px;
+    }
+    p{
+        font-size:10pt;
+    }
+}
