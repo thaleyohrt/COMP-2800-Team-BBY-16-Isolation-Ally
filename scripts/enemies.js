@@ -40,7 +40,11 @@ function spawnEnemy(main) {
 function moveEnemies(allEnemies) {
     allEnemies.forEach(function(enemy){
         if (enemy.y > window.innerHeight+100) {
+<<<<<<< HEAD
             
+=======
+            enemy.destroy;
+>>>>>>> e9892c688b4ab6d461002b3148105403a99b38b5
         } else {
             enemy.y += speed;
         }
