@@ -29,8 +29,7 @@ let config = {
 };
 
 let game = new Phaser.Game(config);
-
-var speed = 5; //game speed
+let speed = 5; //game speed
 
 function preload() {
     this.load.image('road', 'images/Road-Background.png');
