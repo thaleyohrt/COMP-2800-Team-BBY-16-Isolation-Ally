@@ -7,11 +7,24 @@ function loadPlayerAssets(main) {
 
 function addPlayer(main) {
     let player;
-    player = main.add.sprite((window.innerWidth / 2), (window.innerHeight / 1.1), 'player');
+    console.log(player);
+    player = main.physics.add.sprite((window.innerWidth / 2), (window.innerHeight / 1.1), 'player');
     
     player.setDisplaySize(90, 90).position = 1;
     
     addMovement(main, player);
+    console.log("aaa");
+    main.add.collider(enemy, player, playerHitCallback);
+    console.log("ee");
+    console.log(enemy);
+    console.log(player);
+}
+
+function enemyHitCallback(enemy, player) {
+    console.log("tessssttt");
+    if (enemy.active === true && player.active === true) {
+        console.log("tessssttt");
+    }
 }
 
 function addMovement(main, player) {

@@ -17,6 +17,13 @@ let config = {
     type: Phaser.AUTO,
     width: WIDTH,
     height: HEIGHT,
+    physics: {
+      default: 'arcade',
+      arcade: {
+        gravity: { y: 0 },
+        debug: false
+      }
+    },
     fps: {
         target: FPS,
         forceSetTimeOut: true
