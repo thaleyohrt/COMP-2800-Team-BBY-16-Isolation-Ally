@@ -12,7 +12,7 @@ function loadPlayerAssets(main) {
 
 function addPlayer(main) {
     player = main.add.sprite((window.innerWidth / 2), (window.innerHeight / 1.1), 'player');
-    player.setDisplaySize(90, 90).position = 1;
+    player.setDisplaySize(90, 90).position = MIDDLE;
     addMovement(main);
 }
 

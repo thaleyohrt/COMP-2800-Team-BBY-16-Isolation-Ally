@@ -1,6 +1,8 @@
 const DELAY = 1000;
 let enemies;
-let enemy;
+let enemy = {
+    position: 0,
+};
 let enemyToSpawn;
 let nextSpawn; //next spawn time
 let enemyObjects = [];
@@ -28,8 +30,8 @@ function spawnEnemies (main) {
 }
 
 function spawnEnemy(main) {
-    let position = Phaser.Math.Between(0, 2); //choses one of the tree lanes
-    enemy = main.add.sprite(positionCoords[position], -100, enemyToSpawn); //spawns enemy at the chosen lane
+    enemy.position = Phaser.Math.Between(0, 2); //choses one of the tree lanes
+    enemy = main.add.sprite(positionCoords[enemy.position], -100, enemyToSpawn); //spawns enemy at the chosen lane
     enemy.setDisplaySize(90, 90);
     nextSpawn = main.time.now+DELAY; //updates when the next spawn should be
     
@@ -44,6 +46,13 @@ function moveEnemies(allEnemies) {
         } else {
             enemy.y += speed;
         }
+    })
+    allEnemies.forEach(function(enemy) {
+        let gameOver = false;
+        if (player.position == enemy.position 
+            && player.position == 0) {
+                loadMain();
+            }
     })
 }
 
