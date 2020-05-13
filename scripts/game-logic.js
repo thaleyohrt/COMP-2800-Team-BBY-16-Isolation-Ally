@@ -6,13 +6,16 @@ const PAUSE_SIZE = 50;
 const TEXT_WIDTH = 300;
 const TEXT_Y = 50;
 const PAUSE_X = 30;
+const PLAY_UNICODE = "\u25B6";
+const PAUSE_UNICODE = "\u275A\u275A";
 
 let w = window.innerWidth; // width
 let h = window.innerHeight; // height
 let textX = (w - TEXT_WIDTH) / 2;
-let num = 0;
-let score;
-let pause;
+let speed = 5; // game speed
+let scoreValue = 0;
+let scoreText;
+let pauseBtn;
 let paused = false;
 
 $("body").css("overflow", "hidden");
@@ -33,7 +36,6 @@ let config = {
 };
 
 let game = new Phaser.Game(config);
-let speed = 5; //game speed
 
 function preload() {
     this.load.image('road', 'images/Road-Background.png');
@@ -42,28 +44,28 @@ function preload() {
 }
 
 function create() {
-
     game.scale.resize(w, h);
     back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h + 3);
     back[1] = this.add.image((w / 2), -(h / 2), 'road').setDisplaySize(w, h + 3);
     addPlayer(this);
-    this.pause = this.add.text(PAUSE_X, TEXT_Y, "\u275A\u275A", {
+    this.pauseBtn = this.add.text(PAUSE_X, TEXT_Y, PAUSE_UNICODE, {
         fontSize: PAUSE_SIZE + "px",
         color: "yellow"
     });
     pointer = game.input.activePointer;
-    this.pause.setInteractive().on('pointerdown', function(){
+    this.pauseBtn.setInteractive().on('pointerdown', function(){
         paused = !paused;
     });
-    score = this.add.text(textX, TEXT_Y, "Score: ", {
+    scoreText = this.add.text(textX, TEXT_Y, "Score: ", {
         fontSize: FONT_SIZE + 'px'
     });
 }
 
 function update() {
     if (!paused) {
-        num++;
-        score.setText("Score: " + (num / 10).toFixed(1) + "ft");
+        scoreValue++;
+        scoreText.setText("Score: " + (scoreValue / 10).toFixed(1) + "ft");
+        this.pauseBtn.setText(PAUSE_UNICODE);
         back[1].y += speed;
         back[0].y += speed;
 
@@ -75,5 +77,7 @@ function update() {
         }
         spawnEnemies(this);
         moveEnemies(enemyObjects);
+    } else {
+        this.pauseBtn.setText(PLAY_UNICODE);
     }
 }
