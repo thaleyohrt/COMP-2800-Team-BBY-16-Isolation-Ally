@@ -2,8 +2,10 @@ const FPS = 60;
 const WIDTH = 800;
 const HEIGHT = 600;
 const FONT_SIZE = 40;
+const PAUSE_SIZE = 50;
 const TEXT_WIDTH = 300;
 const TEXT_Y = 50;
+const PAUSE_X = 30;
 
 let w = window.innerWidth; // width
 let h = window.innerHeight; // height
@@ -45,8 +47,9 @@ function create() {
     back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h + 3);
     back[1] = this.add.image((w / 2), -(h / 2), 'road').setDisplaySize(w, h + 3);
     addPlayer(this);
-    this.pause = this.add.text(textX, h / 2, "Pause", {
-        fontSize: FONT_SIZE + 'px'
+    this.pause = this.add.text(PAUSE_X, TEXT_Y, "\u275A\u275A", {
+        fontSize: PAUSE_SIZE + "px",
+        color: "yellow"
     });
     pointer = game.input.activePointer;
     this.pause.setInteractive().on('pointerdown', function(){
