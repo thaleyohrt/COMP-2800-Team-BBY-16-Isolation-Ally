@@ -1,21 +1,60 @@
-this.time.addEvent({ //create
-        delay: 100,
-        loop: true,
-        callback: addAlien
-    });
+const DELAY = 1000;
+let enemies;
+let enemy = {
+    position: 0,
+};
+let enemyToSpawn;
+let nextSpawn; //next spawn time
+let enemyObjects = [];
 
-function addAlien () {
-    var alien = group.get(Phaser.Math.Between(250, 800), Phaser.Math.Between(-64, 0));
-
-    if (!alien) return; // None free
-
-    activateAlien(alien);
+function loadEnemyAssets(main) {
+    main.load.image('enemy1', 'images/testEnemy1.png');
+    main.load.image('enemy2', 'images/testEnemy2.png');
+    enemies = ['enemy1', 'enemy2'];
+    nextSpawn = main.time.now + DELAY;
 }
 
-function activateAlien (alien) {
-    alien
-    .setActive(true)
-    .setVisible(true)
-    .setTint(Phaser.Display.Color.RandomRGB().color)
-    .play('creep');
+function spawnEnemies(main) {
+
+    let chance = Phaser.Math.Between(0, 100);
+    if (chance >= 90) {
+        enemyToSpawn = enemies[0];
+    } else {
+        enemyToSpawn = enemies[1];
+    }
+
+    if (main.time.now >= nextSpawn) {
+        spawnEnemy(main);
+    }
+
+}
+
+function spawnEnemy(main) {
+    let lane = Phaser.Math.Between(0, 2); //choses one of the tree lanes
+    enemy = main.add.sprite(positionCoords[lane], -100, enemyToSpawn); //spawns enemy at the chosen lane
+    enemy.setDisplaySize(90, 90);
+    nextSpawn = main.time.now + DELAY; //updates when the next spawn should be
+    enemy.position = lane;
+    enemyObjects.push(enemy);
+    console.log(enemyObjects);
+}
+
+function moveEnemies(allEnemies) {
+    allEnemies.forEach(function (enemy) {
+        if (enemy.y > window.innerHeight + 100) {
+            enemy.destroy;
+        } else {
+            enemy.y += speed;
+        }
+    })
+}
+
+function checkCollision(allEnemies) {
+    allEnemies.forEach(function (enemy) {
+        if (enemy.y > window.innerHeight - 175
+            && enemy.y < window.innerHeight
+            && enemy.position == player.position) {
+            loadGameOver();
+        }
+    })
 }

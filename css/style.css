@@ -28,6 +28,21 @@
     margin-top:40px;
     text-align: left;
 }
+
+#game-over-page {
+    background-color: black;
+}
+#game-over {
+    font-weight: bold;
+    font-size: 50px;
+}
+#game-over-container {
+    margin-top: 40vh;
+}
+#game-over-retry {
+    font-size: 30px;
+}
+
 @media (max-width: 480px){
     .achievement-list-title {
         font-size:1.5rem;
