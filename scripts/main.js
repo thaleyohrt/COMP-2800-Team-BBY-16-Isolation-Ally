@@ -92,3 +92,7 @@ function loadAbout() {
 function loadGameOver() {
     document.location.href = "game-over.html";
 }
+
+function loadEaster() {
+    document.location.href = "barrel-roll.html";
+}
