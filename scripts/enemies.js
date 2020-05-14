@@ -34,7 +34,7 @@ function spawnEnemy(main) {
     nextSpawn = main.time.now+DELAY; //updates when the next spawn should be
     
     enemyObjects.push(enemy);
-    console.log(enemyObjects);
+//    console.log(enemyObjects);
 }
 
 function moveEnemies(allEnemies) {

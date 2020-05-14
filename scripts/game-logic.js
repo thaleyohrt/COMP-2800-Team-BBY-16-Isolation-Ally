@@ -24,6 +24,13 @@ let config = {
     type: Phaser.AUTO,
     width: WIDTH,
     height: HEIGHT,
+    physics: {
+      default: 'arcade',
+      arcade: {
+        gravity: { y: 0 },
+        debug: false
+      }
+    },
     fps: {
         target: FPS,
         forceSetTimeOut: true
@@ -77,7 +84,27 @@ function update() {
         }
         spawnEnemies(this);
         moveEnemies(enemyObjects);
+        player.setMaxVelocity(500 + (scoreValue/1)); //maximum speed at which the player changes lanes. Increases at the game progresses.
     } else {
         this.pauseBtn.setText(PLAY_UNICODE);
     }
+    
+    
+    var lastPressed;
+    if (player.x <= positionCoords[player.position]) {
+        if (getPressed() == 4) {
+            player.setAccelerationX(0);
+            player.setVelocityX(0);
+            player.x = positionCoords[player.position];
+        }      
+    }
+    
+    if (player.x >= positionCoords[player.position]) {
+        if (getPressed() == 6) {
+            player.setAccelerationX(0);
+            player.setVelocityX(0);
+            player.x = positionCoords[player.position];
+        }
+    }
+    
 }
