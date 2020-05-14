@@ -29,6 +29,8 @@ function preload() {
 
 }
 
+var paused = false;
+
 function create() {
     game.scale.resize(w, h);
     back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h + 3);
@@ -40,14 +42,16 @@ function create() {
 }
 
 function update() {
-    num++;
-    score.setText("Score: " + num);
-    back[1].y += 5;
-    back[0].y += 5;
-    if (back[0].y >= h * 1.5) {
-        back[0].y = -(h / 2);
-    }
-    if (back[1].y >= h * 1.5) {
-        back[1].y = -(h / 2);
+    if (!paused){
+        num++;
+        score.setText("Score: " + num);
+        back[1].y += 5;
+        back[0].y += 5;
+        if (back[0].y >= h * 1.5) {
+            back[0].y = -(h / 2);
+        }
+        if (back[1].y >= h * 1.5) {
+            back[1].y = -(h / 2);
+        }
     }
 }
