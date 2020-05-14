@@ -6,52 +6,79 @@ let positions = [LEFT, MIDDLE, RIGHT];
 let positionCoords = [window.innerWidth / 5, window.innerWidth / 2, window.innerWidth / 1.25];
 let player;
 
+var lastPressed;
+
 function loadPlayerAssets(main) {
     main.load.image('player', 'images/samplePlayer.png');
 }
 
 function addPlayer(main) {
-    player = main.add.sprite((window.innerWidth / 2), (window.innerHeight / 1.1), 'player');
+    player = main.physics.add.sprite((window.innerWidth / 2), (window.innerHeight / 1.1), 'player');
     player.setDisplaySize(90, 90).position = MIDDLE;
     addMovement(main);
 }
 
 function addMovement(main) {
+    var downX, upX, threshold = 15;
     let barrelRoll = 0;
+    
     main.input.keyboard.on('keydown_A', function (event) {
-        if (player.position != LEFT) {
-            player.position = positions[(player.position)-1];
-            player.x = positionCoords[player.position];
-        }
+        moveLeft();
     });
     main.input.keyboard.on('keydown_D', function (event) {
-        if (player.position != RIGHT) {
-            player.position = positions[(player.position)+1];
-            player.x = positionCoords[player.position];
-        }
+        moveRight();
     });
     main.input.keyboard.on('keydown_LEFT', function (event) {
-        if (player.position != LEFT) {
-            player.position = positions[(player.position)-1];
-            player.x = positionCoords[player.position];
-        }
         if (barrelRoll == 3) {
             barrelRoll++;
         } else {
             barrelRoll = 0;
         }
+        moveLeft();
     });
     main.input.keyboard.on('keydown_RIGHT', function (event) {
-        if (player.position != RIGHT) {
-            player.position = positions[(player.position)+1];
-            player.x = positionCoords[player.position];
-        }
         if (barrelRoll == 1) {
             barrelRoll++;
         } else {
             barrelRoll = 0;
         }
+        moveRight();
     });
+
+    main.input.on('pointerdown', function (pointer) {
+        downX = pointer.x;
+    });
+              
+    main.input.on('pointerup', function (pointer) {
+        upX = pointer.x;
+        if (upX < downX - threshold){
+            moveLeft();
+        } else if (upX > downX + threshold) {
+            moveRight();
+        }
+    });
+}
+
+function getLastPressed() {
+    return lastPressed;
+}
+
+function moveLeft() {
+    lastPressed = 4; // 4 for left
+    player.setVelocityX(0);
+    if (player.position != LEFT) {
+        player.setAccelerationX(-9000);
+        player.position = positions[(player.position)-1];
+    }
+}
+
+function moveRight() {
+    lastPressed = 6; // 6 for right
+    player.setVelocityX(0);
+    if (player.position != RIGHT) {
+        player.setAccelerationX(9000);
+        player.position = positions[(player.position)+1];
+    }
     
     main.input.keyboard.on('keydown_UP', function(event) {
         if (barrelRoll == 0) {
