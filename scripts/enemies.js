@@ -51,10 +51,12 @@ function moveEnemies(allEnemies) {
 
 function checkCollision(allEnemies) {
     allEnemies.forEach(function (enemy) {
-        if (enemy.y > window.innerHeight - 175
-            && enemy.y < window.innerHeight
-            && enemy.position == player.position) {
-            loadGameOver();
-        }
-    })
+        if ((enemy.y > window.innerHeight - 125
+            && enemy.y < window.innerHeight) 
+            && ((enemy.x == window.innerWidth / 5 && player.x == window.innerWidth / 5) 
+            || (enemy.x == window.innerWidth / 2 && player.x == window.innerWidth / 2) 
+            || (enemy.x == window.innerWidth / 1.25 && player.x == window.innerWidth / 1.25))) {
+        loadGameOver();
+    }
+})
 }
