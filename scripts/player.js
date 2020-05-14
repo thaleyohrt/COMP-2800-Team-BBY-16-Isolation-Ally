@@ -19,42 +19,53 @@ function addPlayer(main) {
 }
 
 function addMovement(main) {
+    var downX, upX, threshold = 15;
+    
     main.input.keyboard.on('keydown_A', function (event) {
-        lastPressed = 4; // 4 for left
-        player.setVelocityX(0);
-        if (player.position != LEFT) {
-            player.setAccelerationX(-9000);
-            player.position = positions[(player.position)-1];
-        }
+        moveLeft();
     });
     main.input.keyboard.on('keydown_D', function (event) {
-        lastPressed = 6; // 6 for right
-        player.setVelocityX(0);
-        console.log("lastP: " + lastPressed);
-        if (player.position != RIGHT) {
-            player.setAccelerationX(9000);
-            player.position = positions[(player.position)+1];
-        }
+        moveRight();
     });
     main.input.keyboard.on('keydown_LEFT', function (event) {
-        lastPressed = 4; // 4 for left
-        player.setVelocityX(0);
-        if (player.position != LEFT) {
-            player.setAccelerationX(-9000);
-            player.position = positions[(player.position)-1];
-        }
+        moveLeft();
     });
     main.input.keyboard.on('keydown_RIGHT', function (event) {
-        lastPressed = 6; // 6 for right
-        player.setVelocityX(0);
-        console.log("lastP: " + lastPressed);
-        if (player.position != RIGHT) {
-            player.setAccelerationX(9000);
-            player.position = positions[(player.position)+1];
+        moveRight();
+    });
+
+    main.input.on('pointerdown', function (pointer) {
+        downX = pointer.x;
+    });
+              
+    main.input.on('pointerup', function (pointer) {
+        upX = pointer.x;
+        if (upX < downX - threshold){
+            moveLeft();
+        } else if (upX > downX + threshold) {
+            moveRight();
         }
     });
 }
 
-function getPressed() {
+function getLastPressed() {
     return lastPressed;
+}
+
+function moveLeft() {
+    lastPressed = 4; // 4 for left
+    player.setVelocityX(0);
+    if (player.position != LEFT) {
+        player.setAccelerationX(-9000);
+        player.position = positions[(player.position)-1];
+    }
+}
+
+function moveRight() {
+    lastPressed = 6; // 6 for right
+    player.setVelocityX(0);
+    if (player.position != RIGHT) {
+        player.setAccelerationX(9000);
+        player.position = positions[(player.position)+1];
+    }
 }

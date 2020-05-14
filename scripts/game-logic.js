@@ -92,7 +92,7 @@ function update() {
     
     var lastPressed;
     if (player.x <= positionCoords[player.position]) {
-        if (getPressed() == 4) {
+        if (getLastPressed() == 4) {
             player.setAccelerationX(0);
             player.setVelocityX(0);
             player.x = positionCoords[player.position];
@@ -100,7 +100,7 @@ function update() {
     }
     
     if (player.x >= positionCoords[player.position]) {
-        if (getPressed() == 6) {
+        if (getLastPressed() == 6) {
             player.setAccelerationX(0);
             player.setVelocityX(0);
             player.x = positionCoords[player.position];
