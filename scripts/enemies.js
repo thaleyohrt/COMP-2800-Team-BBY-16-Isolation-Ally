@@ -51,10 +51,10 @@ function moveEnemies(allEnemies) {
 
 function checkCollision(allEnemies) {
     allEnemies.forEach(function (enemy) {
-        if (enemy.y > window.innerHeight - 100
-            && enemy.y < window.innerHeight - 50
+        if (enemy.y > window.innerHeight - 175
+            && enemy.y < window.innerHeight
             && enemy.position == player.position) {
-            loadMain();
+            loadGameOver();
         }
     })
 }

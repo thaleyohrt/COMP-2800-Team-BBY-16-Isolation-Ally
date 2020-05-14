@@ -88,3 +88,7 @@ function loadHelp() {
 function loadAbout() {
     document.location.href = "about-us.html";
 }
+
+function loadGameOver() {
+    document.location.href = "game-over.html";
+}
