@@ -77,6 +77,7 @@ function update() {
         }
         spawnEnemies(this);
         moveEnemies(enemyObjects);
+        checkCollision(enemyObjects);
     } else {
         this.pauseBtn.setText(PLAY_UNICODE);
     }
