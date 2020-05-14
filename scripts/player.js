@@ -44,6 +44,22 @@ function addMovement(main) {
         }
         moveRight();
     });
+    main.input.keyboard.on('keydown_UP', function(event) {
+        if (barrelRoll == 0) {
+            barrelRoll++;
+        } else if (barrelRoll == 4) {
+            loadEaster();
+        } else {
+            barrelRoll = 0;
+        }
+    });
+    main.input.keyboard.on('keydown_DOWN', function(event) {
+        if (barrelRoll == 2) {
+            barrelRoll++;
+        } else {
+            barrelRoll = 0;
+        }
+    });
 
     main.input.on('pointerdown', function (pointer) {
         downX = pointer.x;
@@ -79,22 +95,4 @@ function moveRight() {
         player.setAccelerationX(9000);
         player.position = positions[(player.position)+1];
     }
-    
-    main.input.keyboard.on('keydown_UP', function(event) {
-        if (barrelRoll == 0) {
-            barrelRoll++;
-        } else if (barrelRoll == 4) {
-            loadEaster();
-        } else {
-            barrelRoll = 0;
-        }
-    })
-    main.input.keyboard.on('keydown_DOWN', function(event) {
-        if (barrelRoll == 2) {
-            barrelRoll++;
-        } else {
-            barrelRoll = 0;
-        }
-    })
-
 }
