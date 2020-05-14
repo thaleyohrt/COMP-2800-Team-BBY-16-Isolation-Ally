@@ -17,6 +17,7 @@ function addPlayer(main) {
 }
 
 function addMovement(main) {
+    let barrelRoll = 0;
     main.input.keyboard.on('keydown_A', function (event) {
         if (player.position != LEFT) {
             player.position = positions[(player.position)-1];
@@ -34,11 +35,39 @@ function addMovement(main) {
             player.position = positions[(player.position)-1];
             player.x = positionCoords[player.position];
         }
+        if (barrelRoll == 3) {
+            barrelRoll++;
+        } else {
+            barrelRoll = 0;
+        }
     });
     main.input.keyboard.on('keydown_RIGHT', function (event) {
         if (player.position != RIGHT) {
             player.position = positions[(player.position)+1];
             player.x = positionCoords[player.position];
         }
+        if (barrelRoll == 1) {
+            barrelRoll++;
+        } else {
+            barrelRoll = 0;
+        }
     });
+    
+    main.input.keyboard.on('keydown_UP', function(event) {
+        if (barrelRoll == 0) {
+            barrelRoll++;
+        } else if (barrelRoll == 4) {
+            loadEaster();
+        } else {
+            barrelRoll = 0;
+        }
+    })
+    main.input.keyboard.on('keydown_DOWN', function(event) {
+        if (barrelRoll == 2) {
+            barrelRoll++;
+        } else {
+            barrelRoll = 0;
+        }
+    })
+
 }

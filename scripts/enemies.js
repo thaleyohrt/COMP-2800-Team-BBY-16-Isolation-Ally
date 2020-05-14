@@ -36,7 +36,6 @@ function spawnEnemy(main) {
     nextSpawn = main.time.now + DELAY; //updates when the next spawn should be
     enemy.position = lane;
     enemyObjects.push(enemy);
-    console.log(enemyObjects);
 }
 
 function moveEnemies(allEnemies) {
