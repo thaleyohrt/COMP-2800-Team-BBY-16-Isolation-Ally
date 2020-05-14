@@ -45,8 +45,8 @@ function preload() {
 
 function create() {
     game.scale.resize(w, h);
-    back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h + 3);
-    back[1] = this.add.image((w / 2), -(h / 2), 'road').setDisplaySize(w, h + 3);
+    back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h + 10);
+    back[1] = this.add.image((w / 2), -(h / 2), 'road').setDisplaySize(w, h + 10);
     addPlayer(this);
     this.pauseBtn = this.add.text(PAUSE_X, TEXT_Y, PAUSE_UNICODE, {
         fontSize: PAUSE_SIZE + "px",
