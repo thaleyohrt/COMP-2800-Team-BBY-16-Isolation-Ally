@@ -36,7 +36,6 @@ function spawnEnemy(main) {
     nextSpawn = main.time.now + DELAY; //updates when the next spawn should be
     enemy.position = lane;
     enemyObjects.push(enemy);
-    console.log(enemyObjects);
 }
 
 function moveEnemies(allEnemies) {
@@ -51,8 +50,7 @@ function moveEnemies(allEnemies) {
 
 function checkCollision(allEnemies) {
     allEnemies.forEach(function (enemy) {
-        if ((enemy.y > window.innerHeight - 125
-            && enemy.y < window.innerHeight) 
+        if ((enemy.y > (window.innerHeight / 1.1) - 90 && enemy.y <  (window.innerHeight / 1.1) + 45)
             && ((enemy.x == window.innerWidth / 5 && player.x == window.innerWidth / 5) 
             || (enemy.x == window.innerWidth / 2 && player.x == window.innerWidth / 2) 
             || (enemy.x == window.innerWidth / 1.25 && player.x == window.innerWidth / 1.25))) {

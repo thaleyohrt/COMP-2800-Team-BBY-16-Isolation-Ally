@@ -24,6 +24,13 @@ let config = {
     type: Phaser.AUTO,
     width: WIDTH,
     height: HEIGHT,
+    physics: {
+      default: 'arcade',
+      arcade: {
+        gravity: { y: 0 },
+        debug: false
+      }
+    },
     fps: {
         target: FPS,
         forceSetTimeOut: true
@@ -47,8 +54,8 @@ var paused = false;
 
 function create() {
     game.scale.resize(w, h);
-    back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h + 3);
-    back[1] = this.add.image((w / 2), -(h / 2), 'road').setDisplaySize(w, h + 3);
+    back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h + 10);
+    back[1] = this.add.image((w / 2), -(h / 2), 'road').setDisplaySize(w, h + 10);
     addPlayer(this);
     this.pauseBtn = this.add.text(PAUSE_X, TEXT_Y, PAUSE_UNICODE, {
         fontSize: PAUSE_SIZE + "px",
@@ -80,7 +87,27 @@ function update() {
         spawnEnemies(this);
         moveEnemies(enemyObjects);
         checkCollision(enemyObjects);
+        player.setMaxVelocity(500 + (scoreValue/1)); //maximum speed at which the player changes lanes. Increases at the game progresses.
     } else {
         this.pauseBtn.setText(PLAY_UNICODE);
     }
+    
+    
+    var lastPressed;
+    if (player.x <= positionCoords[player.position]) {
+        if (getLastPressed() == 4) {
+            player.setAccelerationX(0);
+            player.setVelocityX(0);
+            player.x = positionCoords[player.position];
+        }      
+    }
+    
+    if (player.x >= positionCoords[player.position]) {
+        if (getLastPressed() == 6) {
+            player.setAccelerationX(0);
+            player.setVelocityX(0);
+            player.x = positionCoords[player.position];
+        }
+    }
+    
 }
