@@ -50,8 +50,6 @@ function preload() {
     loadEnemyAssets(this);
 }
 
-var paused = false;
-
 function create() {
     game.scale.resize(w, h);
     back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h + 10);
@@ -69,6 +67,9 @@ function create() {
         fontSize: FONT_SIZE + 'px'
     });
 }
+
+var button1 = document.getElementById("resume-button");
+var button2 = document.getElementById("menu-button");
 
 function update() {
     if (!paused) {
@@ -88,8 +89,14 @@ function update() {
         moveEnemies(enemyObjects);
         checkCollision(enemyObjects);
         player.setMaxVelocity(500 + (scoreValue/1)); //maximum speed at which the player changes lanes. Increases at the game progresses.
+
+        button1.style.display = "none";
+        button2.style.display = "none";
     } else {
         this.pauseBtn.setText(PLAY_UNICODE);
+        
+        button1.style.display = "block";
+        button2.style.display = "block";
     }
     
     
@@ -110,4 +117,8 @@ function update() {
         }
     }
     
+}
+
+function pauseChange(){
+    paused = !paused;
 }
