@@ -1,3 +1,4 @@
+let checked = false;
 let config = {
     type: Phaser.AUTO,
     width: WIDTH,
@@ -62,6 +63,7 @@ function update() {
     let button1 = document.getElementById("resume-button");
     let button2 = document.getElementById("menu-button");
 
+    if(!checked){
     if (!paused) {
         scoreValue++;
         scoreText.setText("Score: " + (scoreValue / 10).toFixed(1) + "ft");
@@ -105,12 +107,14 @@ function update() {
         }
     }
 }
+}
 
 function pauseChange() {
     paused = !paused;
 }
 
-async function highScore() {
+function highScore() {
+    checked = true;
     firebase.auth().onAuthStateChanged(async user => {
         if (user) {
             let snapshot = await db.collection("users").doc(user.uid).collection("highScore").doc("score").get();
