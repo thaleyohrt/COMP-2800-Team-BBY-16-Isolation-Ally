@@ -83,19 +83,18 @@ function update() {
     }
 }
 
-function highScore() {
-    paused = !paused;
-    firebase.auth().onAuthStateChanged(function (user) {
+async function highScore() {
+    paused = true;
+    firebase.auth().onAuthStateChanged(async user => {
         if (user) {
-            db.collection("users").doc(user.uid).collection("highScore").doc("score").get().then(function (snapshot) {
-                if (scoreValue > snapshot.data().score) {
-                    db.collection("users").doc(user.uid).collection("highScore").doc("score").set({
-                        score: scoreValue
-                    });
-                }
-            });
-        } else {
-
+            let snapshot = await db.collection("users").doc(user.uid).collection("highScore").doc("score").get();
+            if (parseInt((scoreValue / 10).toFixed(1)) > parseInt(snapshot.data().score)) {
+                db.collection("users").doc(user.uid).collection("highScore").doc("score").update({
+                    score: (scoreValue / 10).toFixed(1)
+                }).then(function () { loadGameOver() });
+            } else {
+                loadGameOver();
+            }
         }
     });
 }

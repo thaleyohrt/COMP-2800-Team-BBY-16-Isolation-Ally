@@ -55,7 +55,6 @@ function checkCollision(allEnemies) {
                 || (enemy.x == window.innerWidth / 2 && player.x == window.innerWidth / 2)
                 || (enemy.x == window.innerWidth / 1.25 && player.x == window.innerWidth / 1.25))) {
             highScore();
-            loadGameOver();
         }
     })
 }
