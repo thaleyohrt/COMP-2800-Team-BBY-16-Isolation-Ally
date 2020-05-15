@@ -2,7 +2,7 @@ let positions = [0, 1, 2];
 let positionCoords = [window.innerWidth / 5, window.innerWidth / 2, window.innerWidth / 1.25];
 
 function loadPlayerAssets(main) {
-    main.load.spritesheet('player', 'images/sampleCharacterSpritesCut.png', {
+    main.load.spritesheet('player', 'images/sampleCharacterSpritesCut3.png', {
         frameWidth: 32,
         framHeight: 49
     });
@@ -18,7 +18,7 @@ function addPlayer(main) {
         repeat: -1
     });
 
-    player.setDisplaySize(90, 90).position = 1;
+    player.setDisplaySize(120, 120).position = 1;
     
     addMovement(main, player);
 
