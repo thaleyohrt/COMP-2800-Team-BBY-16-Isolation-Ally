@@ -24,11 +24,7 @@ function register() {
     let password = document.getElementById("signupPasswordInput").value;
     let passwordConfirm = document.getElementById("signupPasswordConfirmInput").value;
     if (password == passwordConfirm) {
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            alert(errorMessage);
-        }).then(function () {
+        firebase.auth().createUserWithEmailAndPassword(email, password).then(function () {
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
                     db.collection("users").doc(user.uid).set({
@@ -36,13 +32,20 @@ function register() {
                     }).then(function () {
                         console.log("New user added to firestore");
                         $('#modal-signup').modal('hide');
+                        let sc = db.collection("users").doc(user.uid).collection("highScore").doc("score");
+                        sc.set({
+                            score: "0"
+                        });
                         document.location.href = "menu.html";
                     })
                 } else {
 
                 }
-            });
-
+            }).catch(function (error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                alert(errorMessage);
+            })
         });
     } else {
         alert("Your passwords don't match");
