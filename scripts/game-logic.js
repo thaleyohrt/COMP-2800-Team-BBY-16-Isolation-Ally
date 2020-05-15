@@ -43,8 +43,6 @@ function preload() {
     loadEnemyAssets(this);
 }
 
-var paused = false;
-
 function create() {
     game.scale.resize(w, h);
     back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h + 3);
@@ -63,6 +61,9 @@ function create() {
     });
 }
 
+var button1 = document.getElementById("resume-button");
+var button2 = document.getElementById("menu-button");
+
 function update() {
     if (!paused) {
         scoreValue++;
@@ -80,7 +81,17 @@ function update() {
         spawnEnemies(this);
         moveEnemies(enemyObjects);
         checkCollision(enemyObjects);
+
+        button1.style.display = "none";
+        button2.style.display = "none";
     } else {
         this.pauseBtn.setText(PLAY_UNICODE);
+        
+        button1.style.display = "block";
+        button2.style.display = "block";
     }
+}
+
+function pauseChange(){
+    paused = !paused;
 }
