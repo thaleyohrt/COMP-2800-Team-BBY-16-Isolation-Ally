@@ -8,15 +8,6 @@ let h = window.innerHeight; // height
 let speed = 5; // game speed
 let scoreValue = 0;
 let paused = false;
-
-// Game interface
-const FONT_SIZE = 40;
-const PAUSE_SIZE = 50;
-const TEXT_WIDTH = 300;
-const TEXT_Y = 50;
-const PAUSE_X = 30;
-const PLAY_UNICODE = "\u25B6";
-const PAUSE_UNICODE = "\u275A\u275A";
 let scoreText;
 let pauseBtn;
 

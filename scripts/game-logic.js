@@ -32,13 +32,18 @@ function preload() {
 }
 
 function create() {
+    const FONT_SIZE = 40;
+    const PAUSE_SIZE = 50;
+    const TEXT_Y = 50;
+    const PAUSE_X = 30;
+    const TEXT_WIDTH = 300;
     let textX = (w - TEXT_WIDTH) / 2;
 
     game.scale.resize(w, h);
     back[0] = this.add.image((w / 2), (h / 2), 'road').setDisplaySize(w, h + 10);
     back[1] = this.add.image((w / 2), -(h / 2), 'road').setDisplaySize(w, h + 10);
     addPlayer(this);
-    this.pauseBtn = this.add.text(PAUSE_X, TEXT_Y, PAUSE_UNICODE, {
+    this.pauseBtn = this.add.text(PAUSE_X, TEXT_Y, "", {
         fontSize: PAUSE_SIZE + "px",
         color: "yellow"
     });
@@ -52,6 +57,8 @@ function create() {
 }
 
 function update() {
+    const PLAY_UNICODE = "\u25B6";
+    const PAUSE_UNICODE = "\u275A\u275A";
     let button1 = document.getElementById("resume-button");
     let button2 = document.getElementById("menu-button");
 
