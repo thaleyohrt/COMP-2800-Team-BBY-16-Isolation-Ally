@@ -49,7 +49,7 @@ function create() {
     });
     pointer = game.input.activePointer;
     this.pauseBtn.setInteractive().on('pointerdown', function () {
-        paused = !paused;
+        pauseChange();
     });
     scoreText = this.add.text(textX, TEXT_Y, "Score: ", {
         fontSize: FONT_SIZE + 'px'
@@ -108,4 +108,19 @@ function update() {
 
 function pauseChange() {
     paused = !paused;
+}
+
+async function highScore() {
+    firebase.auth().onAuthStateChanged(async user => {
+        if (user) {
+            let snapshot = await db.collection("users").doc(user.uid).collection("highScore").doc("score").get();
+            if (parseInt((scoreValue / 10).toFixed(1)) > parseInt(snapshot.data().score)) {
+                db.collection("users").doc(user.uid).collection("highScore").doc("score").update({
+                    score: (scoreValue / 10).toFixed(1)
+                }).then(function () { loadGameOver() });
+            } else {
+                loadGameOver();
+            }
+        }
+    });
 }
