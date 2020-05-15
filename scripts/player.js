@@ -9,13 +9,26 @@ let player;
 var lastPressed;
 
 function loadPlayerAssets(main) {
-    main.load.image('player', 'images/samplePlayer.png');
+    main.load.spritesheet('player', 'images/sampleCharacterSpritesCut3.png', {
+        frameWidth: 32,
+        framHeight: 49
+    });
 }
 
 function addPlayer(main) {
     player = main.physics.add.sprite((window.innerWidth / 2), (window.innerHeight / 1.1), 'player');
-    player.setDisplaySize(90, 90).position = MIDDLE;
+    main.anims.create({ 
+        key: "player_anim",
+        frames: main.anims.generateFrameNumbers('player'),
+        frameRate: 3,
+        repeat: -1
+    });
+
+    player.setDisplaySize(120, 120).position = MIDDLE;
+    
     addMovement(main);
+
+    player.anims.play("player_anim");
 }
 
 function addMovement(main) {
