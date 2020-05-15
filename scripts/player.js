@@ -7,7 +7,7 @@ function loadPlayerAssets(main) {
 
 function addPlayer(main) {
     player = main.physics.add.sprite((window.innerWidth / 2), (window.innerHeight / 1.1), 'player');
-    main.anims.create({ 
+    animations = main.anims.create({ 
         key: "player_anim",
         frames: main.anims.generateFrameNumbers('player'),
         frameRate: 3,
@@ -19,6 +19,14 @@ function addPlayer(main) {
     addMovement(main);
 
     player.anims.play("player_anim");
+}
+
+
+function pausePlayer(){
+    animations.pause();
+}
+function resumePlayer(){
+    animations.resume();
 }
 
 function addMovement(main) {

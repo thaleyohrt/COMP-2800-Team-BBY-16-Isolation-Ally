@@ -82,8 +82,11 @@ function update() {
 
         button1.style.display = "none";
         button2.style.display = "none";
+
+        resumePlayer();
     } else {
         this.pauseBtn.setText(PLAY_UNICODE);
+        pausePlayer();
 
         button1.style.display = "block";
         button2.style.display = "block";
