@@ -109,3 +109,19 @@ function update() {
 function pauseChange() {
     paused = !paused;
 }
+
+async function highScore() {
+    paused = true;
+    firebase.auth().onAuthStateChanged(async user => {
+        if (user) {
+            let snapshot = await db.collection("users").doc(user.uid).collection("highScore").doc("score").get();
+            if (parseInt((scoreValue / 10).toFixed(1)) > parseInt(snapshot.data().score)) {
+                db.collection("users").doc(user.uid).collection("highScore").doc("score").update({
+                    score: (scoreValue / 10).toFixed(1)
+                }).then(function () { loadGameOver() });
+            } else {
+                loadGameOver();
+            }
+        }
+    });
+}
