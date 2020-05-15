@@ -1,12 +1,3 @@
-const DELAY = 1000;
-let enemies;
-let enemy = {
-    position: 0,
-};
-let enemyToSpawn;
-let nextSpawn; //next spawn time
-let enemyObjects = [];
-
 function loadEnemyAssets(main) {
     main.load.image('enemy1', 'images/testEnemy1.png');
     main.load.image('enemy2', 'images/testEnemy2.png');
@@ -15,18 +6,15 @@ function loadEnemyAssets(main) {
 }
 
 function spawnEnemies(main) {
-
     let chance = Phaser.Math.Between(0, 100);
     if (chance >= 90) {
         enemyToSpawn = enemies[0];
     } else {
         enemyToSpawn = enemies[1];
     }
-
     if (main.time.now >= nextSpawn) {
         spawnEnemy(main);
     }
-
 }
 
 function spawnEnemy(main) {
@@ -50,11 +38,11 @@ function moveEnemies(allEnemies) {
 
 function checkCollision(allEnemies) {
     allEnemies.forEach(function (enemy) {
-        if ((enemy.y > (window.innerHeight / 1.1) - 90 && enemy.y <  (window.innerHeight / 1.1) + 45)
-            && ((enemy.x == window.innerWidth / 5 && player.x == window.innerWidth / 5) 
-            || (enemy.x == window.innerWidth / 2 && player.x == window.innerWidth / 2) 
-            || (enemy.x == window.innerWidth / 1.25 && player.x == window.innerWidth / 1.25))) {
-        loadGameOver();
-    }
-})
+        if ((enemy.y > (window.innerHeight / 1.1) - 90 && enemy.y < (window.innerHeight / 1.1) + 45) &&
+            ((enemy.x == window.innerWidth / 5 && player.x == window.innerWidth / 5) ||
+                (enemy.x == window.innerWidth / 2 && player.x == window.innerWidth / 2) ||
+                (enemy.x == window.innerWidth / 1.25 && player.x == window.innerWidth / 1.25))) {
+            loadGameOver();
+        }
+    })
 }
