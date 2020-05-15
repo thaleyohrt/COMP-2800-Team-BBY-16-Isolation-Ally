@@ -111,7 +111,6 @@ function pauseChange() {
 }
 
 async function highScore() {
-    pauseChange();
     firebase.auth().onAuthStateChanged(async user => {
         if (user) {
             let snapshot = await db.collection("users").doc(user.uid).collection("highScore").doc("score").get();
