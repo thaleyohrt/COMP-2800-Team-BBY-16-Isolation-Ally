@@ -2,20 +2,19 @@
 function login() {
     let email = document.getElementById("loginEmail").value;
     let password = document.getElementById("loginPasswordInput").value;
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        alert(errorMessage);
-    }).then(function (){
+    firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
         firebase.auth().onAuthStateChanged(function (user) {
-            if (user){
+            if (user) {
                 document.location.href = "menu.html";
             } else {
                 console.log("Enter you info");
             }
-        });
-        
+        }).catch(function (error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(errorMessage);
+        })
     });
 }
 
