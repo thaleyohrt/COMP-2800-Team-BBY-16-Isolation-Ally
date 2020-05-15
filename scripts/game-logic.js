@@ -1,3 +1,4 @@
+let checked = false;
 let config = {
     type: Phaser.AUTO,
     width: WIDTH,
@@ -62,6 +63,7 @@ function update() {
     let button1 = document.getElementById("resume-button");
     let button2 = document.getElementById("menu-button");
 
+    if(!checked){
     if (!paused) {
         scoreValue++;
         scoreText.setText("Score: " + (scoreValue / 10).toFixed(1) + "ft");
@@ -108,7 +110,24 @@ function update() {
         }
     }
 }
+}
 
 function pauseChange() {
     paused = !paused;
+}
+
+function highScore() {
+    checked = true;
+    firebase.auth().onAuthStateChanged(async user => {
+        if (user) {
+            let snapshot = await db.collection("users").doc(user.uid).collection("highScore").doc("score").get();
+            if (parseInt((scoreValue / 10).toFixed(1)) > parseInt(snapshot.data().score)) {
+                db.collection("users").doc(user.uid).collection("highScore").doc("score").update({
+                    score: (scoreValue / 10).toFixed(1)
+                }).then(function () { loadGameOver() });
+            } else {
+                loadGameOver();
+            }
+        }
+    });
 }

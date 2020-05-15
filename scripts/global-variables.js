@@ -23,7 +23,8 @@ let positionCoords = [window.innerWidth / 5, window.innerWidth / 2, window.inner
 let lastPressed;
 
 // Enemies
-const DELAY = 1000;
+let originalDelay = 1500;
+let delay = originalDelay;
 let enemyObjects = [];
 let enemies;
 let enemy = {
