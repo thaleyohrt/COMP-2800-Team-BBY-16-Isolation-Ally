@@ -2,7 +2,7 @@ function loadEnemyAssets(main) {
     main.load.image('enemy1', 'images/testEnemy1.png');
     main.load.image('enemy2', 'images/testEnemy2.png');
     enemies = ['enemy1', 'enemy2'];
-    nextSpawn = main.time.now + DELAY;
+    nextSpawn = main.time.now + delay;
 }
 
 function spawnEnemies(main) {
@@ -21,7 +21,8 @@ function spawnEnemy(main) {
     let lane = Phaser.Math.Between(0, 2); //choses one of the tree lanes
     enemy = main.add.sprite(positionCoords[lane], -100, enemyToSpawn); //spawns enemy at the chosen lane
     enemy.setDisplaySize(90, 90);
-    nextSpawn = main.time.now + DELAY; //updates when the next spawn should be
+    nextSpawn = main.time.now + delay; //updates when the next spawn should be
+    updateDelay();
     enemy.position = lane;
     enemyObjects.push(enemy);
 }
@@ -45,4 +46,13 @@ function checkCollision(allEnemies) {
             highScore();
         }
     })
+}
+
+var del = 15;
+function updateDelay() {
+    speed += 0.05;
+    
+    delay -= delay/100 - 3;
+    del = Math.log(1.1);
+    console.log(delay/100 - 3);
 }
