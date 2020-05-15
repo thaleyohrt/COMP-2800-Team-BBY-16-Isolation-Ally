@@ -49,7 +49,7 @@ function create() {
     });
     pointer = game.input.activePointer;
     this.pauseBtn.setInteractive().on('pointerdown', function () {
-        paused = !paused;
+        pauseChange();
     });
     scoreText = this.add.text(textX, TEXT_Y, "Score: ", {
         fontSize: FONT_SIZE + 'px'
