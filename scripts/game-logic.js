@@ -53,7 +53,7 @@ function create() {
         color: "yellow"
     });
     pointer = game.input.activePointer;
-    this.pauseBtn.setInteractive().on('pointerdown', function(){
+    this.pauseBtn.setInteractive().on('pointerdown', function () {
         paused = !paused;
     });
     scoreText = this.add.text(textX, TEXT_Y, "Score: ", {
@@ -81,4 +81,21 @@ function update() {
     } else {
         this.pauseBtn.setText(PLAY_UNICODE);
     }
+}
+
+function highScore() {
+    paused = !paused;
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection("users").doc(user.uid).collection("highScore").doc("score").get().then(function (snapshot) {
+                if (scoreValue > snapshot.data().score) {
+                    db.collection("users").doc(user.uid).collection("highScore").doc("score").set({
+                        score: scoreValue
+                    });
+                }
+            });
+        } else {
+
+        }
+    });
 }

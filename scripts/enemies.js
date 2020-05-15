@@ -50,11 +50,12 @@ function moveEnemies(allEnemies) {
 
 function checkCollision(allEnemies) {
     allEnemies.forEach(function (enemy) {
-        if ((enemy.y > (window.innerHeight / 1.1) - 90 && enemy.y <  (window.innerHeight / 1.1) + 45)
-            && ((enemy.x == window.innerWidth / 5 && player.x == window.innerWidth / 5) 
-            || (enemy.x == window.innerWidth / 2 && player.x == window.innerWidth / 2) 
-            || (enemy.x == window.innerWidth / 1.25 && player.x == window.innerWidth / 1.25))) {
-        loadGameOver();
-    }
-})
+        if ((enemy.y > (window.innerHeight / 1.1) - 90 && enemy.y < (window.innerHeight / 1.1) + 45)
+            && ((enemy.x == window.innerWidth / 5 && player.x == window.innerWidth / 5)
+                || (enemy.x == window.innerWidth / 2 && player.x == window.innerWidth / 2)
+                || (enemy.x == window.innerWidth / 1.25 && player.x == window.innerWidth / 1.25))) {
+            highScore();
+            loadGameOver();
+        }
+    })
 }
