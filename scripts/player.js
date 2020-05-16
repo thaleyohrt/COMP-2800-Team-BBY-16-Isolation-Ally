@@ -7,7 +7,7 @@ function loadPlayerAssets(main) {
 
 function addPlayer(main) {
     player = main.physics.add.sprite((window.innerWidth / 2), (window.innerHeight / 1.1), 'player');
-    animations = main.anims.create({ 
+    animations = main.anims.create({
         key: "player_anim",
         frames: main.anims.generateFrameNumbers('player'),
         frameRate: 3,
@@ -15,17 +15,17 @@ function addPlayer(main) {
     });
 
     player.setDisplaySize(120, 120).position = MIDDLE;
-    
+
     addMovement(main);
 
     player.anims.play("player_anim");
 }
 
-
-function pausePlayer(){
+function pausePlayer() {
     animations.pause();
 }
-function resumePlayer(){
+
+function resumePlayer() {
     animations.resume();
 }
 

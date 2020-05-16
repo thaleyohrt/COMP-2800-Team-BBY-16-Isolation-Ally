@@ -48,10 +48,9 @@ function checkCollision(allEnemies) {
     })
 }
 
-var del = 15;
 function updateDelay() {
+    let del = 15;
     speed += 0.05;
-    
     delay -= delay/100 - 3;
     del = Math.log(1.1);
     console.log(delay/100 - 3);

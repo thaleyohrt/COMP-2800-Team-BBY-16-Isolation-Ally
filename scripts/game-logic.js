@@ -1,4 +1,3 @@
-let checked = false;
 let config = {
     type: Phaser.AUTO,
     width: WIDTH,
@@ -63,53 +62,53 @@ function update() {
     let button1 = document.getElementById("resume-button");
     let button2 = document.getElementById("menu-button");
 
-    if(!checked){
-    if (!paused) {
-        scoreValue++;
-        scoreText.setText("Score: " + (scoreValue / 10).toFixed(1) + "ft");
-        this.pauseBtn.setText(PAUSE_UNICODE);
-        back[1].y += speed;
-        back[0].y += speed;
+    if (!checked) {
+        if (!paused) {
+            scoreValue++;
+            scoreText.setText("Score: " + (scoreValue / 10).toFixed(1) + "ft");
+            this.pauseBtn.setText(PAUSE_UNICODE);
+            back[1].y += speed;
+            back[0].y += speed;
 
-        if (back[0].y >= h * 1.5) {
-            back[0].y = -(h / 2);
+            if (back[0].y >= h * 1.5) {
+                back[0].y = -(h / 2);
+            }
+            if (back[1].y >= h * 1.5) {
+                back[1].y = -(h / 2);
+            }
+            spawnEnemies(this);
+            moveEnemies(enemyObjects);
+            checkCollision(enemyObjects);
+            player.setMaxVelocity(500 + (scoreValue / 1)); //maximum speed at which the player changes lanes. Increases at the game progresses.
+
+            button1.style.display = "none";
+            button2.style.display = "none";
+
+            resumePlayer();
+        } else {
+            this.pauseBtn.setText(PLAY_UNICODE);
+            pausePlayer();
+
+            button1.style.display = "block";
+            button2.style.display = "block";
         }
-        if (back[1].y >= h * 1.5) {
-            back[1].y = -(h / 2);
+
+        if (player.x <= positionCoords[player.position]) {
+            if (getLastPressed() == LEFT) {
+                player.setAccelerationX(0);
+                player.setVelocityX(0);
+                player.x = positionCoords[player.position];
+            }
         }
-        spawnEnemies(this);
-        moveEnemies(enemyObjects);
-        checkCollision(enemyObjects);
-        player.setMaxVelocity(500 + (scoreValue / 1)); //maximum speed at which the player changes lanes. Increases at the game progresses.
 
-        button1.style.display = "none";
-        button2.style.display = "none";
-
-        resumePlayer();
-    } else {
-        this.pauseBtn.setText(PLAY_UNICODE);
-        pausePlayer();
-
-        button1.style.display = "block";
-        button2.style.display = "block";
+        if (player.x >= positionCoords[player.position]) {
+            if (getLastPressed() == RIGHT) {
+                player.setAccelerationX(0);
+                player.setVelocityX(0);
+                player.x = positionCoords[player.position];
+            }
+        }
     }
-
-    if (player.x <= positionCoords[player.position]) {
-        if (getLastPressed() == LEFT) {
-            player.setAccelerationX(0);
-            player.setVelocityX(0);
-            player.x = positionCoords[player.position];
-        }
-    }
-
-    if (player.x >= positionCoords[player.position]) {
-        if (getLastPressed() == RIGHT) {
-            player.setAccelerationX(0);
-            player.setVelocityX(0);
-            player.x = positionCoords[player.position];
-        }
-    }
-}
 }
 
 function pauseChange() {
@@ -124,7 +123,9 @@ function highScore() {
             if (parseInt((scoreValue / 10).toFixed(1)) > parseInt(snapshot.data().score)) {
                 db.collection("users").doc(user.uid).collection("highScore").doc("score").update({
                     score: (scoreValue / 10).toFixed(1)
-                }).then(function () { loadGameOver() });
+                }).then(function () {
+                    loadGameOver()
+                });
             } else {
                 loadGameOver();
             }

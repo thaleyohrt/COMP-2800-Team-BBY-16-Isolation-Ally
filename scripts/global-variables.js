@@ -6,10 +6,11 @@ let back = [];
 let w = window.innerWidth; // width
 let h = window.innerHeight; // height
 let speed = 5; // game speed
-let scoreValue = 0;
 let paused = false;
-let scoreText;
 let pauseBtn;
+let scoreValue = 0;
+let scoreText;
+let checked = false; // High score database check
 
 // Player and enemy lanes
 const LEFT = 0;
@@ -23,8 +24,8 @@ let positionCoords = [window.innerWidth / 5, window.innerWidth / 2, window.inner
 let lastPressed;
 
 // Enemies
-let originalDelay = 1500;
-let delay = originalDelay;
+const initialDelay = 1500;
+let delay = initialDelay;
 let enemyObjects = [];
 let enemies;
 let enemy = {
