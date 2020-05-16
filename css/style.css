@@ -7,6 +7,26 @@
     max-width: 80vh;
 }
 
+#resume-button, #menu-button{
+    font-weight: bold;
+    font-size: xx-large;
+    position: fixed;
+    width: 225px;
+    height: 80px;
+    margin-top: -12px;
+    margin-left: -110px;
+    display: none;
+
+}
+#resume-button{
+    top: 35%;
+    left: 50%;
+}
+#menu-button{
+    top: 50%;
+    left: 50%;
+}
+
 .achievement-list-item {
     margin-top:20px;
     margin-left:10%;
@@ -28,6 +48,21 @@
     margin-top:40px;
     text-align: left;
 }
+
+#game-over-page {
+    background-color: black;
+}
+#game-over {
+    font-weight: bold;
+    font-size: 50px;
+}
+#game-over-container {
+    margin-top: 40vh;
+}
+#game-over-retry {
+    font-size: 30px;
+}
+
 @media (max-width: 480px){
     .achievement-list-title {
         font-size:1.5rem;
