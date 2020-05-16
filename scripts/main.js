@@ -5,6 +5,12 @@ function login() {
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
+                if (db.collection("users").doc(user.uid).collection("highScore").doc("score") == undefined) {
+                    let sc = db.collection("users").doc(user.uid).collection("highScore").doc("score");
+                    sc.set({
+                        score: "0"
+                    });
+                }
                 document.location.href = "menu.html";
             } else {
                 console.log("Enter you info");
