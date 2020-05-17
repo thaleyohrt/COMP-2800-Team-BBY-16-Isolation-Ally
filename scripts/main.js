@@ -5,9 +5,10 @@ function login() {
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
-                if (db.collection("users").doc(user.uid).collection("highScore").doc("score") == undefined) {
-                    let sc = db.collection("users").doc(user.uid).collection("highScore").doc("score");
+                if (db.collection("users").doc(user.uid).score == undefined) {
+                    let sc = db.collection("users").doc(user.uid);
                     sc.set({
+                        email: user.email,
                         score: "0"
                     });
                 }
@@ -34,24 +35,21 @@ function register() {
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
                     db.collection("users").doc(user.uid).set({
-                        email: user.email
+                        email: user.email,
+                        score: "0"
                     }).then(function () {
                         console.log("New user added to firestore");
                         $('#modal-signup').modal('hide');
-                        let sc = db.collection("users").doc(user.uid).collection("highScore").doc("score");
-                        sc.set({
-                            score: "0"
-                        });
-                        document.location.href = "menu.html";
+                        loadMain();
                     })
                 } else {
 
                 }
-            }).catch(function (error) {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                alert(errorMessage);
             })
+        }).catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(errorMessage);
         });
     } else {
         alert("Your passwords don't match");
