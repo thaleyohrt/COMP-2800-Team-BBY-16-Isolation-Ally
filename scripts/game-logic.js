@@ -121,7 +121,7 @@ function highScore() {
     firebase.auth().onAuthStateChanged(async user => {
         if (user) {
             let snapshot = await db.collection("users").doc(user.uid).get();
-            if ((scoreValue / 10) > (snapshot.data().score / 10)) {
+            if ((scoreValue / 10) > snapshot.data().score) {
                 db.collection("users").doc(user.uid).update({
                     score: (scoreValue / 10)
                 }).then(function () {
