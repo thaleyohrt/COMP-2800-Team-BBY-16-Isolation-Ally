@@ -9,7 +9,7 @@ function login() {
                     let sc = db.collection("users").doc(user.uid);
                     sc.set({
                         email: user.email,
-                        score: "0"
+                        score: 0
                     });
                 }
                 loadMain();
@@ -35,7 +35,7 @@ function register() {
                 if (user) {
                     db.collection("users").doc(user.uid).set({
                         email: user.email,
-                        score: "0"
+                        score: 0
                     }).then(function () {
                         console.log("New user added to firestore");
                         $('#modal-signup').modal('hide');

@@ -120,9 +120,9 @@ function highScore() {
     firebase.auth().onAuthStateChanged(async user => {
         if (user) {
             let snapshot = await db.collection("users").doc(user.uid).get();
-            if (parseInt((scoreValue / 10).toFixed(1)) > parseInt(snapshot.data().score)) {
+            if ((scoreValue / 10) > (snapshot.data().score / 10)) {
                 db.collection("users").doc(user.uid).update({
-                    score: (scoreValue / 10).toFixed(1)
+                    score: (scoreValue / 10)
                 }).then(function () {
                     loadGameOver()
                 });
