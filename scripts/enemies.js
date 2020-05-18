@@ -10,22 +10,7 @@ function loadEnemyAssets(main) {
 
 function spawnEnemies(main) {
     let chance = Phaser.Math.Between(0, 4);
-    switch (chance) {
-        case 0:
-            enemyToSpawn = enemies[0];
-            break;
-        case 1: 
-            enemyToSpawn = enemies[1];
-            break;
-        case 2:
-            enemyToSpawn = enemies[2];
-            break;
-        case 3:
-            enemyToSpawn = enemies[3];
-            break;
-        default:
-            enemyToSpawn = enemies[4];
-    }
+    enemyToSpawn = enemies[chance];
     if (main.time.now >= nextSpawn) {
         spawnEnemy(main);
     }
