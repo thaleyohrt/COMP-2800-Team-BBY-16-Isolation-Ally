@@ -29,6 +29,7 @@ function preload() {
     this.load.image('road', 'images/Road-Background.png');
     loadPlayerAssets(this);
     loadEnemyAssets(this);
+    bgMusic.play();
 }
 
 function create() {
@@ -124,10 +125,14 @@ function highScore() {
                 db.collection("users").doc(user.uid).update({
                     score: (scoreValue / 10).toFixed(1)
                 }).then(function () {
-                    loadGameOver()
+                    setTimeout(function () {
+                        loadGameOver();
+                    }, 1000)
                 });
             } else {
-                loadGameOver();
+                setTimeout(function () {
+                    loadGameOver();
+                }, 300)
             }
         }
     });
