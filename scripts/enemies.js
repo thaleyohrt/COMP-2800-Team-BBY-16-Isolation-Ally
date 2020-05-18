@@ -1,16 +1,30 @@
 function loadEnemyAssets(main) {
-    main.load.image('enemy1', 'images/testEnemy1.png');
-    main.load.image('enemy2', 'images/testEnemy2.png');
-    enemies = ['enemy1', 'enemy2'];
+    main.load.image('enemy1', 'images/enemy1still.png');
+    main.load.image('enemy2', 'images/enemy2still.png');
+    main.load.image('enemy3', 'images/enemy3still.png');
+    main.load.image('enemy4', 'images/enemy4still.png');
+    main.load.image('enemy5', 'images/enemy5still.png');
+    enemies = ['enemy1', 'enemy2', 'enemy3', 'enemy4', 'enemy5'];
     nextSpawn = main.time.now + delay;
 }
 
 function spawnEnemies(main) {
-    let chance = Phaser.Math.Between(0, 100);
-    if (chance >= 90) {
-        enemyToSpawn = enemies[0];
-    } else {
-        enemyToSpawn = enemies[1];
+    let chance = Phaser.Math.Between(0, 4);
+    switch (chance) {
+        case 0:
+            enemyToSpawn = enemies[0];
+            break;
+        case 1: 
+            enemyToSpawn = enemies[1];
+            break;
+        case 2:
+            enemyToSpawn = enemies[2];
+            break;
+        case 3:
+            enemyToSpawn = enemies[3];
+            break;
+        default:
+            enemyToSpawn = enemies[4];
     }
     if (main.time.now >= nextSpawn) {
         spawnEnemy(main);
@@ -20,7 +34,7 @@ function spawnEnemies(main) {
 function spawnEnemy(main) {
     let lane = Phaser.Math.Between(0, 2); //choses one of the tree lanes
     enemy = main.add.sprite(positionCoords[lane], -100, enemyToSpawn); //spawns enemy at the chosen lane
-    enemy.setDisplaySize(90, 90);
+    enemy.setDisplaySize(110, 110);
     nextSpawn = main.time.now + delay; //updates when the next spawn should be
     updateDelay();
     enemy.position = lane;
