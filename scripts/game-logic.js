@@ -29,6 +29,7 @@ function preload() {
     this.load.image('road', 'images/Road-Background.png');
     loadPlayerAssets(this);
     loadEnemyAssets(this);
+    bgMusic.loop = true;
     bgMusic.play();
     finalScore = 0;
 }
