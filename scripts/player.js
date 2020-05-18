@@ -92,6 +92,7 @@ function getLastPressed() {
 
 function moveLeft() {
     lastPressed = LEFT;
+    moveSFX.play();
     player.setVelocityX(0);
     if (player.position != LEFT) {
         player.setAccelerationX(-9000);
@@ -101,6 +102,7 @@ function moveLeft() {
 
 function moveRight() {
     lastPressed = RIGHT;
+    moveSFX.play();
     player.setVelocityX(0);
     if (player.position != RIGHT) {
         player.setAccelerationX(9000);

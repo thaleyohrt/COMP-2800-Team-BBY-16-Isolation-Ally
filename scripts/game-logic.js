@@ -61,6 +61,7 @@ function create() {
 function update() {
     const PLAY_UNICODE = "\u25B6";
     const PAUSE_UNICODE = "\u275A\u275A";
+    const PLAYER_SPEED = 2000;
     let button1 = document.getElementById("resume-button");
     let button2 = document.getElementById("menu-button");
 
@@ -81,7 +82,7 @@ function update() {
             spawnEnemies(this);
             moveEnemies(enemyObjects);
             checkCollision(enemyObjects);
-            player.setMaxVelocity(500 + (scoreValue / 1)); //maximum speed at which the player changes lanes. Increases at the game progresses.
+            player.setMaxVelocity(PLAYER_SPEED);
 
             button1.style.display = "none";
             button2.style.display = "none";
@@ -115,6 +116,11 @@ function update() {
 
 function pauseChange() {
     paused = !paused;
+    if (paused) {
+        bgMusic.pause();
+    } else {
+        bgMusic.play();
+    }
 }
 
 function highScore() {

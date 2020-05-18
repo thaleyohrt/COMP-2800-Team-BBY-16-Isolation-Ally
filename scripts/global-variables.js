@@ -23,6 +23,7 @@ let player;
 let positions = [LEFT, MIDDLE, RIGHT];
 let positionCoords = [window.innerWidth / 5, window.innerWidth / 2, window.innerWidth / 1.25];
 let lastPressed;
+let moveSFX = new Audio("audio/move.wav");
 
 // Enemies
 const initialDelay = 1500;

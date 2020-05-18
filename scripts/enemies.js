@@ -58,5 +58,4 @@ function updateDelay() {
     speed += 0.05;
     delay -= delay / 100 - 3;
     del = Math.log(1.1);
-    console.log(delay / 100 - 3);
 }
