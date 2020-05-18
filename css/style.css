@@ -7,7 +7,8 @@
     max-width: 80vh;
 }
 
-#resume-button, #menu-button{
+#resume-button,
+#menu-button {
     font-weight: bold;
     font-size: xx-large;
     position: fixed;
@@ -18,48 +19,58 @@
     display: none;
 
 }
-#resume-button{
+
+#resume-button {
     top: 35%;
     left: 50%;
 }
-#menu-button{
+
+#menu-button {
     top: 50%;
     left: 50%;
 }
 
 .achievement-list-item {
-    margin-top:20px;
-    margin-left:10%;
-    margin-right:10%;
-    padding:20px;
-    border-radius:10px;
+    margin-top: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 20px;
+    border-radius: 10px;
 }
-.achievement-list-img{
-    float:left;
-    height:100px;
-    width:100px;
-    margin-right:20px;
+
+.achievement-list-img {
+    float: left;
+    height: 100px;
+    width: 100px;
+    margin-right: 20px;
 }
+
 .achievement-list-title {
-    margin-bottom:0;
-    float:left;
+    margin-bottom: 0;
+    float: left;
 }
-.description{
-    margin-top:40px;
+
+.description {
+    margin-top: 40px;
     text-align: left;
 }
 
 #game-over-page {
     background-color: black;
 }
+
 #game-over {
     font-weight: bold;
     font-size: 50px;
+    padding-bottom: 0;
 }
+
 #score {
     font-weight: bold;
     font-size: 40px;
+    padding-bottom: 15px;
 }
+
 #game-over-container {
     margin-top: 35vh;
 }
@@ -71,24 +82,28 @@
     margin-bottom: 10px;
 }
 
-@media (max-width: 480px){
+@media (max-width: 480px) {
     .achievement-list-title {
-        font-size:1.5rem;
+        font-size: 1.5rem;
     }
+
     .description {
-        font-size:10pt;
+        font-size: 10pt;
     }
 }
-@media(max-width:400px){
+
+@media(max-width:400px) {
     .achievement-list-title {
-        font-size:1.2rem;
+        font-size: 1.2rem;
     }
+
     .achievement-img {
         width: 60px;
-        height:60px;
+        height: 60px;
     }
+
     .description {
-        font-size:10pt;
+        font-size: 10pt;
     }
 }
 
