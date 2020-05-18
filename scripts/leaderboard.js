@@ -24,7 +24,7 @@ async function leaderBoard() {
         if (user) {
             db.collection("users").doc(user.uid).get().then(snapshot => {
                 let high = document.getElementById("top");
-                high.innerText = "your highest score: " + snapshot.data().score + "ft";
+                high.innerText = "Your High Score: " + snapshot.data().score + "ft";
             })
         } else {
 
