@@ -11,6 +11,7 @@ let pauseBtn;
 let scoreValue = 0;
 let scoreText;
 let checked = false; // High score database check
+let bgMusic = new Audio("audio/bg-music.mp3");
 
 // Player and enemy lanes
 const LEFT = 0;
@@ -33,3 +34,4 @@ let enemy = {
 };
 let enemyToSpawn;
 let nextSpawn; //next spawn time
+let collisionSFX = new Audio("audio/collision.mp3");
