@@ -56,6 +56,10 @@
     font-weight: bold;
     font-size: 50px;
 }
+#score {
+    font-weight: bold;
+    font-size: 40px;
+}
 #game-over-container {
     margin-top: 35vh;
 }

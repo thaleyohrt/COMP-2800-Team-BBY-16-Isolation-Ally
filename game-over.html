@@ -28,7 +28,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
 </head>
 
-<body id="game-over-page">
+<body id="game-over-page" onload="current()">
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
@@ -36,6 +36,7 @@
     <div class="container">
         <div class="card bg-danger text-white text-center" id="game-over-container">
             <div class="card-body" id="game-over">Game Over</div>
+            <div id="score"></div>
             <div id="game-over-btn-box">
                 <button class="game-over-btns" onclick="loadGame()">Retry</button>
                 <button class="game-over-btns" onclick="loadMain()">Menu</button>
@@ -66,6 +67,8 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
 
+    <script src="scripts/global-variables.js"></script>
+    <script src="scripts/game-logic.js"></script>
     <script src="scripts/main.js"></script>
 
     <!--------------------------------------------------------------------->

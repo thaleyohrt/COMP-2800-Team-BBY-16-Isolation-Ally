@@ -118,6 +118,7 @@ function pauseChange() {
 }
 
 function highScore() {
+    localStorage.setItem("score", (scoreValue / 10));
     checked = true;
     firebase.auth().onAuthStateChanged(async user => {
         if (user) {
@@ -137,4 +138,8 @@ function highScore() {
             }
         }
     });
+}
+
+function current(){
+    document.getElementById("score").innerText = "Score: " + localStorage.getItem("score") + "ft";
 }
