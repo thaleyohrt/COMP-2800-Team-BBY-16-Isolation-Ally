@@ -17,6 +17,10 @@ function login() {
                 console.log("Enter you info");
             }
         });
+    }).catch(function (error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorMessage);
     });
 }
 
@@ -32,10 +36,11 @@ function register() {
                     db.collection("users").doc(user.uid).set({
                         email: user.email,
                         score: "0"
+                    }).then(function () {
+                        console.log("New user added to firestore");
+                        $('#modal-signup').modal('hide');
+                        loadMain();
                     });
-                    console.log("New user added to firestore");
-                    $('#modal-signup').modal('hide');
-                    loadMain();
                 } else {
 
                 }
@@ -71,7 +76,19 @@ function loadGame() {
 
 //load leaderboard
 function loadLeaderboard() {
-    document.location.href = "leaderboard.html";
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection("users").doc(user.uid).get().then(doc => {
+                if (doc.data().username == undefined) {
+                    $("#modal-username").modal('show');
+                } else {
+                    document.location.href = "leaderboard.html";
+                }
+            });
+        } else {
+
+        }
+    });
 }
 
 //load achievement-list
