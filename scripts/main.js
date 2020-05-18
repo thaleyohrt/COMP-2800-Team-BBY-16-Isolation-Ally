@@ -12,16 +12,11 @@ function login() {
                         score: "0"
                     });
                 }
-                document.location.href = "menu.html";
+                loadMain();
             } else {
                 console.log("Enter you info");
             }
-        }).catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            alert(errorMessage);
-        })
+        });
     });
 }
 
@@ -37,11 +32,10 @@ function register() {
                     db.collection("users").doc(user.uid).set({
                         email: user.email,
                         score: "0"
-                    }).then(function () {
-                        console.log("New user added to firestore");
-                        $('#modal-signup').modal('hide');
-                        loadMain();
-                    })
+                    });
+                    console.log("New user added to firestore");
+                    $('#modal-signup').modal('hide');
+                    loadMain();
                 } else {
 
                 }
@@ -101,4 +95,34 @@ function loadGameOver() {
 
 function loadEaster() {
     document.location.href = "barrel-roll.html";
+}
+
+//checks if the user has a username
+function checkUsername() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection("users").doc(user.uid).get().then(doc => {
+                if (doc.data().username == undefined) {
+                    $("#modal-username").modal('show');
+                }
+            });
+        } else {
+
+        }
+    });
+}
+
+//adds username to account
+function username() {
+    let j = document.getElementById("enterUsername").value;
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection("users").doc(user.uid).update({
+                username: j
+            });
+        } else {
+
+        }
+    });
+    $("#modal-username").modal('hide');
 }

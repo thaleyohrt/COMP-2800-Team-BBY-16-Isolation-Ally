@@ -4,7 +4,7 @@ async function leaderBoard() {
     for (let i in leaderboard) {
         let li = document.createElement("li");
         li.classList.add("list-group-item");
-        li.innerText = leaderboard[leaderboard.length - i - 1].session;
+        li.innerText = leaderboard[leaderboard.length - i - 1].username;
         if (i == 0) {
             li.classList.add("list-group-item-success");
 
@@ -37,7 +37,7 @@ const readDatabase = async function () {
     let j = await db.collection('users').orderBy('score').limit(10).get().then(snapshot => {
         snapshot.docs.forEach(doc => {
             leaderboard.push({
-                "session": doc.id,
+                "username": doc.data().username,
                 "score": doc.data().score
             });
         });
