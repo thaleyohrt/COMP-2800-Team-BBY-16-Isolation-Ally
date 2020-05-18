@@ -30,6 +30,7 @@ function preload() {
     loadPlayerAssets(this);
     loadEnemyAssets(this);
     bgMusic.play();
+    finalScore = 0;
 }
 
 function create() {
@@ -127,7 +128,7 @@ function highScore() {
                 }).then(function () {
                     setTimeout(function () {
                         loadGameOver();
-                    }, 1000)
+                    }, 300)
                 });
             } else {
                 setTimeout(function () {

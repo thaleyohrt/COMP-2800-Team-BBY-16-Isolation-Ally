@@ -57,10 +57,14 @@
     font-size: 50px;
 }
 #game-over-container {
-    margin-top: 40vh;
+    margin-top: 35vh;
 }
-#game-over-retry {
+
+.game-over-btns {
     font-size: 30px;
+    width: 45%;
+    margin: 5px;
+    margin-bottom: 10px;
 }
 
 @media (max-width: 480px){
