@@ -38,7 +38,7 @@ function create() {
     const PAUSE_SIZE = 50;
     const TEXT_Y = 50;
     const PAUSE_X = 30;
-    const TEXT_WIDTH = 300;
+    const TEXT_WIDTH = 150;
     let textX = (w - TEXT_WIDTH) / 2;
 
     game.scale.resize(w, h);
@@ -47,14 +47,14 @@ function create() {
     addPlayer(this);
     this.pauseBtn = this.add.text(PAUSE_X, TEXT_Y, "", {
         fontSize: PAUSE_SIZE + "px",
-        color: "yellow"
+        color: "yellow",
     });
     pointer = game.input.activePointer;
     this.pauseBtn.setInteractive().on('pointerdown', function () {
         pauseChange();
     });
-    scoreText = this.add.text(textX, TEXT_Y, "Score: ", {
-        fontSize: FONT_SIZE + 'px'
+    scoreText = this.add.text(textX, TEXT_Y, "", {
+        fontSize: FONT_SIZE + 'px',
     });
 }
 
@@ -67,7 +67,7 @@ function update() {
     if (!checked) {
         if (!paused) {
             scoreValue++;
-            scoreText.setText("Score: " + (scoreValue / 10).toFixed(1) + "ft");
+            scoreText.setText((scoreValue / 10).toFixed(1) + "ft");
             this.pauseBtn.setText(PAUSE_UNICODE);
             back[1].y += speed;
             back[0].y += speed;
