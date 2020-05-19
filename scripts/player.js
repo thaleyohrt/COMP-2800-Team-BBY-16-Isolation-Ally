@@ -1,5 +1,5 @@
 function loadPlayerAssets(main) {
-    main.load.spritesheet('player', 'images/player2.png', {
+    main.load.spritesheet('player', 'images/player.png', {
         frameWidth: 322,
         framHeight: 420
     });
