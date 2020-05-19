@@ -98,11 +98,11 @@ function spawnEnemy(main, chance) {
     enemyObjects.push(enemy);
 }
 
-function pausePlayer() {
+function pauseEnemy() {
     animations.pause();
 }
 
-function resumePlayer() {
+function resumeEnemy() {
     animations.resume();
 }
 
@@ -110,8 +110,10 @@ function moveEnemies(allEnemies) {
     allEnemies.forEach(function (enemy) {
         if (enemy.y > window.innerHeight + 100) {
             enemy.destroy;
-        } else {
+        } else if (!enemy.bonus) {
             enemy.y += enemySpeed;
+        } else {
+            enemy.y += speed;
         }
     })
 }
@@ -120,7 +122,7 @@ function checkCollision(allEnemies) {
     allEnemies.forEach(function (enemy) {
         if ((enemy.y > (window.innerHeight / 1.1) - 90 && enemy.y < (window.innerHeight / 1.1) + 45) &&
             (((enemy.x >= window.innerWidth / 5 - 45 && player.x >= window.innerWidth / 5 - 45) &&
-                (enemy.x <= window.innerWidth / 5 + 45 && player.x <= window.innerWidth / 5 + 45)) ||
+                    (enemy.x <= window.innerWidth / 5 + 45 && player.x <= window.innerWidth / 5 + 45)) ||
                 ((enemy.x >= window.innerWidth / 2 - 45 && player.x >= window.innerWidth / 2 - 45) &&
                     (enemy.x <= window.innerWidth / 2 + 45 && player.x <= window.innerWidth / 2 + 45)) ||
                 ((enemy.x >= window.innerWidth / 1.25 - 45 && player.x >= window.innerWidth / 1.25 - 45) &&
@@ -142,6 +144,7 @@ function checkCollision(allEnemies) {
 function updateDelay() {
     let del = 15;
     speed += 0.05;
+    enemySpeed += 0.06;
     delay -= delay / 100 - 3;
     del = Math.log(1.1);
 }

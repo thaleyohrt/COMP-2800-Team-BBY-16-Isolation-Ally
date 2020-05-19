@@ -90,9 +90,11 @@ function update() {
             button2.style.display = "none";
 
             resumePlayer();
+            resumeEnemy();
         } else {
             this.pauseBtn.setText(PLAY_UNICODE);
             pausePlayer();
+            pauseEnemy();
 
             button1.style.display = "block";
             button2.style.display = "block";
