@@ -3,8 +3,8 @@ function loadEnemyAssets(main) {
     main.load.image('bonus1', 'images/hand-sanitizer.png')
 
     main.load.spritesheet('enemy1', 'images/enemy1.png', {
-        frameWidth: 32,
-        framHeight: 49
+        frameWidth: 323,
+        framHeight: 422
     });
     main.load.spritesheet('enemy2', 'images/enemy2.png', {
         frameWidth: 32,
