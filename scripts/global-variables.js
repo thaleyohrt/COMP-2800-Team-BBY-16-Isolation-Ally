@@ -29,10 +29,15 @@ let barrelRoll = 0; // Easter egg
 
 // Enemies
 const initialDelay = 1500;
+const NUM_OF_ENEMIES = 5;
+const NUM_OF_BONUSES = 1;
 let delay = initialDelay;
 let enemyObjects = [];
 let enemies;
-let enemy;
+let enemy = {
+    bonus: false
+};
 let enemyToSpawn;
 let nextSpawn; //next spawn time
 let collisionSFX = new Audio("audio/collision.mp3");
+let bonusSFX = new Audio("audio/bonus.mp3");
