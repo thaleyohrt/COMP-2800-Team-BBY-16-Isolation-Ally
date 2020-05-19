@@ -91,21 +91,25 @@ function getLastPressed() {
 }
 
 function moveLeft() {
-    lastPressed = LEFT;
-    moveSFX.play();
-    player.setVelocityX(0);
-    if (player.position != LEFT) {
-        player.setAccelerationX(-9000);
-        player.position = positions[(player.position) - 1];
+    if (!gameOver && !paused) {
+        lastPressed = LEFT;
+        moveSFX.play();
+        player.setVelocityX(0);
+        if (player.position != LEFT) {
+            player.setAccelerationX(-9000);
+            player.position = positions[(player.position) - 1];
+        }
     }
 }
 
 function moveRight() {
-    lastPressed = RIGHT;
-    moveSFX.play();
-    player.setVelocityX(0);
-    if (player.position != RIGHT) {
-        player.setAccelerationX(9000);
-        player.position = positions[(player.position) + 1];
+    if (!gameOver && !paused) {
+        lastPressed = RIGHT;
+        moveSFX.play();
+        player.setVelocityX(0);
+        if (player.position != RIGHT) {
+            player.setAccelerationX(9000);
+            player.position = positions[(player.position) + 1];
+        }
     }
 }

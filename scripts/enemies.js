@@ -45,6 +45,7 @@ function checkCollision(allEnemies) {
                     (enemy.x <= window.innerWidth / 2 + 45 && player.x <= window.innerWidth / 2 + 45)) ||
                 ((enemy.x >= window.innerWidth / 1.25 - 45 && player.x >= window.innerWidth / 1.25 - 45) &&
                     (enemy.x <= window.innerWidth / 1.25 + 45 && player.x <= window.innerWidth / 1.25 + 45)))) {
+            gameOver = true;
             bgMusic.pause();
             collisionSFX.play();
             highScore();

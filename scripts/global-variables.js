@@ -7,6 +7,7 @@ let w = window.innerWidth; // width
 let h = window.innerHeight; // height
 let speed = 5; // game speed
 let paused = false;
+let gameOver = false;
 let pauseBtn;
 let scoreValue = 0;
 let scoreText;
