@@ -25,15 +25,14 @@ let positions = [LEFT, MIDDLE, RIGHT];
 let positionCoords = [window.innerWidth / 5, window.innerWidth / 2, window.innerWidth / 1.25];
 let lastPressed;
 let moveSFX = new Audio("audio/move.wav");
+let barrelRoll = 0; // Easter egg
 
 // Enemies
 const initialDelay = 1500;
 let delay = initialDelay;
 let enemyObjects = [];
 let enemies;
-let enemy = {
-    position: 0,
-};
+let enemy;
 let enemyToSpawn;
 let nextSpawn; //next spawn time
 let collisionSFX = new Audio("audio/collision.mp3");
