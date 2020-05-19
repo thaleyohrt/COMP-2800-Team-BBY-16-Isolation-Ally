@@ -60,6 +60,7 @@ function create() {
 }
 
 function update() {
+    checkDis();
     const PLAY_UNICODE = "\u25B6";
     const PAUSE_UNICODE = "\u275A\u275A";
     const PLAYER_SPEED = 2000;
@@ -147,6 +148,18 @@ function highScore() {
     });
 }
 
-function current(){
+function current() {
     document.getElementById("score").innerText = "Score: " + localStorage.getItem("score") + "ft";
+}
+
+function checkDis() {
+    if ((scoreValue / 10) >= 10) {
+        firebase.auth().onAuthStateChanged(async user => {
+            if (user) {
+                db.collection("users").doc(user.uid).update({
+                    "a1": true
+                });
+            }
+        });
+    }
 }
