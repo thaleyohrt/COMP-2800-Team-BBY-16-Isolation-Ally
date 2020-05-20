@@ -109,7 +109,7 @@
 }
 
 @media (min-width: 420px) {
-    .jumbotron h1 {
+    .page-header {
         margin-right: 50px;
     }
 }
