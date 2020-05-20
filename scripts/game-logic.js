@@ -60,7 +60,6 @@ function create() {
 }
 
 function update() {
-    checkDis();
     const PLAY_UNICODE = "\u25B6";
     const PAUSE_UNICODE = "\u275A\u275A";
     const PLAYER_SPEED = 2000;
@@ -133,23 +132,11 @@ function highScore() {
     firebase.auth().onAuthStateChanged(async user => {
         if (user) {
             let snapshot = await db.collection("users").doc(user.uid).get();
-            if (localStorage.getItem("score") > snapshot.data().score) {
+            if (parseInt(localStorage.getItem("score")) > snapshot.data().score) {
                 db.collection("users").doc(user.uid).update({
-                    score: localStorage.getItem("score")
+                    score: parseInt(localStorage.getItem("score"))
                 })
             }
         }
     });
-}
-
-function checkDis() {
-    if ((scoreValue / 10) >= 10) {
-        firebase.auth().onAuthStateChanged(async user => {
-            if (user) {
-                db.collection("users").doc(user.uid).update({
-                    "a1": true
-                });
-            }
-        });
-    }
 }
