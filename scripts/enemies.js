@@ -109,7 +109,7 @@ function resumeEnemy() {
 function moveEnemies(allEnemies) {
     allEnemies.forEach(function (enemy) {
         if (enemy.y > window.innerHeight + 100) {
-            enemy.destroy;
+            enemy.destroy();
         } else if (!enemy.bonus) {
             enemy.y += enemySpeed;
         } else {
