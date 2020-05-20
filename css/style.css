@@ -91,6 +91,10 @@
     .description {
         font-size: 10pt;
     }
+
+    #easter-egg {
+        width: 100%;
+    }
 }
 
 @media(max-width:400px) {
@@ -105,6 +109,10 @@
 
     .description {
         font-size: 10pt;
+    }
+
+    #easter-egg {
+        width: 100%;
     }
 }
 
