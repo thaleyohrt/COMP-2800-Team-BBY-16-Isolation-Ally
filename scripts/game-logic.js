@@ -128,30 +128,18 @@ function pauseChange() {
 }
 
 function highScore() {
-    localStorage.setItem("score", (scoreValue / 10));
+    document.getElementById("score").innerText = "Score: " + localStorage.getItem("score") + "ft";
     checked = true;
     firebase.auth().onAuthStateChanged(async user => {
         if (user) {
             let snapshot = await db.collection("users").doc(user.uid).get();
-            if ((scoreValue / 10) > snapshot.data().score) {
+            if (localStorage.getItem("score") > snapshot.data().score) {
                 db.collection("users").doc(user.uid).update({
-                    score: (scoreValue / 10)
-                }).then(function () {
-                    setTimeout(function () {
-                        loadGameOver();
-                    }, 300)
-                });
-            } else {
-                setTimeout(function () {
-                    loadGameOver();
-                }, 300)
+                    score: localStorage.getItem("score")
+                })
             }
         }
     });
-}
-
-function current() {
-    document.getElementById("score").innerText = "Score: " + localStorage.getItem("score") + "ft";
 }
 
 function checkDis() {
