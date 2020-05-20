@@ -113,7 +113,7 @@ function loadGameOver() {
 function loadEaster() {
     document.location.href = "barrel-roll.html";
 }
-function loadAchievement1() {document.location.href = "achievement1.html"}
+function loadAchievement1() {document.location.href = "achievement.html"}
 function loadAchievement2() {document.location.href = "achievement2.html"}
 function loadAchievement3() {document.location.href = "achievement3.html"}
 function loadAchievement4() {document.location.href = "achievement4.html"}
