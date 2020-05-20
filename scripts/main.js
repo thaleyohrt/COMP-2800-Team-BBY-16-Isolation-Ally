@@ -93,16 +93,7 @@ function loadLeaderboard() {
 
 //load achievement-list
 function loadAchievementList() {
-    firebase.auth().onAuthStateChanged(async user => {
-        if (user) {
-            let doc = await db.collection("users").doc(user.uid).get();
-            if(doc.data().a1 == true){
-                document.location.href = "achievement.html";
-            } else {
-                document.location.href = "achievement-list.html";
-            }
-        }
-    });
+    document.location.href = "achievement-list.html";
 }
 
 //load help
