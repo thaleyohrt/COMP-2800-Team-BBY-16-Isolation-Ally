@@ -29,7 +29,9 @@
     top: 50%;
     left: 50%;
 }
-
+#tip{
+    color:white;
+}
 .achievement-list-item {
     margin-top: 20px;
     margin-left: 10%;
