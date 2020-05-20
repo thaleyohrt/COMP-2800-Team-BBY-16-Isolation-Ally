@@ -29,7 +29,9 @@
     top: 50%;
     left: 50%;
 }
-
+#tip{
+    color:white;
+}
 .achievement-list-item {
     margin-top: 20px;
     margin-left: 10%;
@@ -91,6 +93,10 @@
     .description {
         font-size: 10pt;
     }
+
+    #easter-egg {
+        width: 100%;
+    }
 }
 
 @media(max-width:400px) {
@@ -106,10 +112,14 @@
     .description {
         font-size: 10pt;
     }
+
+    #easter-egg {
+        width: 100%;
+    }
 }
 
 @media (min-width: 420px) {
-    .jumbotron h1 {
+    .page-header {
         margin-right: 50px;
     }
 }

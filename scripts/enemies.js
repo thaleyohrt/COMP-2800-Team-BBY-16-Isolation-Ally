@@ -99,7 +99,7 @@ function spawnEnemy(main, chance) {
 }
 
 function pauseEnemy() {
-    animations.pause();
+    enemy.anims.pause();
 }
 
 function resumeEnemy() {
