@@ -22,11 +22,11 @@ function addPlayer(main) {
 }
 
 function pausePlayer() {
-    animations.pause();
+    player.anims.pause();
 }
 
 function resumePlayer() {
-    animations.resume();
+    player.anims.resume();
 }
 
 function addMovement(main) {
