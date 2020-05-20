@@ -128,11 +128,10 @@ function checkCollision(allEnemies) {
                 ((enemy.x >= window.innerWidth / 1.25 - 45 && player.x >= window.innerWidth / 1.25 - 45) &&
                     (enemy.x <= window.innerWidth / 1.25 + 45 && player.x <= window.innerWidth / 1.25 + 45)))) {
             if (enemy.bonus == false) {
-                
                 gameOver = true;
                 bgMusic.pause();
                 collisionSFX.play();
-                loadGameOver();
+                highScore();
             } else {
                 enemy.visible = false;
                 bonusSFX.play();
