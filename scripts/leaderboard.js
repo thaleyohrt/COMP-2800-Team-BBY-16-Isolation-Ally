@@ -34,7 +34,7 @@ async function leaderBoard() {
 
 const readDatabase = async function () {
     let leaderboard = [];
-    let j = await db.collection('users').orderBy('score').limit(10).get().then(snapshot => {
+    let j = await db.collection('users').where("score", ">", 0).orderBy('score').limit(10).get().then(snapshot => {
         snapshot.docs.forEach(doc => {
             if (doc.data().username != undefined) {
                 leaderboard.push({
