@@ -28,7 +28,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
 </head>
 
-<body id="game-over-page" onload="current()">
+<body id="game-over-page" onload="current(), tipChoice()">
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
@@ -42,6 +42,7 @@
                 <button class="game-over-btns" onclick="loadMain()">Menu</button>
             </div>
         </div>
+        <p id="tip">Tip: </p>
     </div>
 
     <!----------------------------------------------->
@@ -70,6 +71,7 @@
     <script src="scripts/global-variables.js"></script>
     <script src="scripts/game-logic.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/tips.js"></script>
 
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->
