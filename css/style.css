@@ -31,6 +31,9 @@
 }
 #tip{
     color:white;
+    text-align: center;
+    margin-top: 20px;
+    font-size: large;
 }
 .achievement-list-item {
     margin-top: 20px;
@@ -75,7 +78,7 @@
 }
 
 #game-over-container {
-    margin-top: 35vh;
+    margin-top: 30vh;
 }
 
 .game-over-btns {
