@@ -28,16 +28,25 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
 </head>
 
-<body id="game-over-page">
+<body id="game-over-page" onload="current(), tipChoice()">
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
 
     <div class="container">
-    <div class="card bg-danger text-white text-center" id="game-over-container">
-        <div class="card-body" id="game-over">Game Over</div>
-        <button id="game-over-retry" onclick="loadGame()">Retry</button>
-      </div>
+        <div class="card bg-danger text-white text-center" id="game-over-container">
+            <div class="card-body" id="game-over">Game Over</div>
+            <div id="score">~</div>
+            <div id="game-over-btn-box">
+                <button class="game-over-btns" onclick="loadGame()">Retry</button>
+                <button class="game-over-btns" onclick="loadMain()">Menu</button>
+            </div>
+            <p id="tip">Tip: </p>
+        </div>
+        <div class="text-center" id="twitter-container">
+            <button class="btn btn-primary btn-lg text-center"><img src="images/twitter.png" width="40px"><a id="tweet">Share on Twitter</a></button>
+        </div>
+
     </div>
 
     <!----------------------------------------------->
@@ -63,7 +72,10 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
 
+    <script src="scripts/global-variables.js"></script>
+    <script src="scripts/game-logic.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/tips.js"></script>
 
     <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->

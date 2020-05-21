@@ -7,7 +7,8 @@
     max-width: 80vh;
 }
 
-#resume-button, #menu-button{
+#resume-button,
+#menu-button {
     font-weight: bold;
     font-size: xx-large;
     position: fixed;
@@ -16,76 +17,126 @@
     margin-top: -12px;
     margin-left: -110px;
     display: none;
-
 }
-#resume-button{
+
+#resume-button {
     top: 35%;
     left: 50%;
 }
-#menu-button{
+
+#menu-button {
     top: 50%;
     left: 50%;
 }
-
+#tip{
+    color:white;
+    text-align: center;
+    margin-top: 20px;
+    font-size: large;
+}
 .achievement-list-item {
-    margin-top:20px;
-    margin-left:10%;
-    margin-right:10%;
-    padding:20px;
-    border-radius:10px;
+    margin-top: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
 }
-.achievement-list-img{
-    float:left;
-    height:100px;
-    width:100px;
-    margin-right:20px;
+
+.achievement-list-img {
+    float: left;
+    height: 100px;
+    width: 100px;
+    margin-right: 20px;
 }
+
 .achievement-list-title {
-    margin-bottom:0;
-    float:left;
+    margin-bottom: 0;
+    float: left;
 }
-.description{
-    margin-top:40px;
+
+.description {
+    margin-top: 40px;
     text-align: left;
 }
 
 #game-over-page {
     background-color: black;
 }
+
 #game-over {
     font-weight: bold;
     font-size: 50px;
-}
-#game-over-container {
-    margin-top: 40vh;
-}
-#game-over-retry {
-    font-size: 30px;
+    padding-bottom: 0;
 }
 
-@media (max-width: 480px){
+#score {
+    font-weight: bold;
+    font-size: 40px;
+    padding-bottom: 15px;
+}
+
+#game-over-container {
+    margin-top: 5vh;
+}
+
+.game-over-btns {
+    font-size: 30px;
+    width: 45%;
+    margin: 5px;
+    margin-bottom: 10px;
+}
+#twitter-container {
+    margin: 15px;
+}
+#twitter-container img {
+    margin-right: 10px;
+}
+#twitter-container a:link, 
+#twitter-container a:visited,
+#twitter-container a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+@media (max-width: 480px) {
     .achievement-list-title {
-        font-size:1.5rem;
+        font-size: 1.5rem;
     }
+
     .description {
-        font-size:10pt;
+        font-size: 10pt;
+    }
+
+    #easter-egg {
+        width: 100%;
     }
 }
-@media(max-width:400px){
+
+@media(max-width:400px) {
     .achievement-list-title {
-        font-size:1.2rem;
+        font-size: 1.2rem;
     }
+
     .achievement-img {
         width: 60px;
-        height:60px;
+        height: 60px;
     }
+
     .description {
-        font-size:10pt;
+        font-size: 10pt;
+    }
+
+    #easter-egg {
+        width: 100%;
     }
 }
 
 @media (min-width: 420px) {
-    .jumbotron h1 {
+    .page-header {
         margin-right: 50px;
+    }
+    #game-over-container {
+        margin-top: 25vh;
     }
 }

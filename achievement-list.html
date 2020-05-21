@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Achievements | Isolation Ally</title>
@@ -8,13 +9,14 @@
     <!--  Meta tag for rendering on mobile devices -->
     <!----------------------------------------------->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <!----------------------------------------------->
     <!-- CSS: Bootstrap, Firebase, other API -->
     <!----------------------------------------------->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-   
+
     <!------------------------>
     <!-- Your own CSS files -->
     <!------------------------>
@@ -25,57 +27,68 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
 
 </head>
+
 <body>
     <!----------------------->
     <!--  HTML Section -->
     <!----------------------->
 
-    <div class ="container">
+    <div class="container">
         <div class="jumbotron">
             <button type="button" class="btn btn-outline-secondary btn-sm float-left" onclick="loadMain()">
                 <img src="images/back-arrow.png" width="32px">
-              </button>
+            </button>
             <h1 class="text-center">Achievements</h1>
-            <p class="text-center">Useful information for player earned goals</p>
         </div>
-        <form action="achievement.html">
-            <button class="achievement-list-item">
-                <img class="achievement-list-img" src ="https://dummyimage.com/60x60/000/fff">
-                <h2 class="achievement-list-title">Achievement1</h2>
-                <p class="description">The description. The description. The description. The description. The description. The description. The description. The description. The description.</p>
-            </button>
-        </form>
-        <form action="achievement.html">
-            <button class="achievement-list-item">
-                <img class="achievement-list-img" src ="https://dummyimage.com/60x60/000/fff">
-                <h2 class="achievement-list-title">Achievement2</h2>
-                <p class="description">The description. The description. The description. The description. The description. The description. The description. The description. The description.</p>
-            </button>
-        </form>
+        <button class="achievement-list-item" onclick="loadAchievement1()">
+            <h2 class="achievement-list-title">A Healthy Sprint</h2>
+            <p class="description">Run 1,000 feet in a single run.</p>
+        </button>
+        <button class="achievement-list-item" onclick="loadAchievement2()">
+            <h2 class="achievement-list-title">Long Runner</h2>
+            <p class="description">Run 10,000 feet in total.</p>
+        </button>
+        <button class="achievement-list-item" onclick="loadAchievement3()">
+            <h2 class="achievement-list-title">Clean, Mean, Running Machine</h2>
+            <p class="description">Collect 10 hand santizer bottles in a single run.</p>
+        </button>
+        <button class="achievement-list-item" onclick="loadAchievement4()">
+            <h2 class="achievement-list-title">Be Careful!</h2>
+            <p class="description">Avoid 100 pedestrains in total.</p>
+        </button>
+        <br>
+        <br>
     </div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+    </script>
 
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.9.2/firebase-firestore.js"></script>
     <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
     <script src="scripts/firebase_api_team16.js"> </script>
-  
+
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script src="scripts/main.js"></script>
 
-     <!--------------------------------------------------------------------->
+    <!--------------------------------------------------------------------->
     <!-- Make calls to your own JavaScript functions, here below-->
     <!---------------------------------------------------------------------->
 
 
 </body>
-</html>                            
+
+</html>

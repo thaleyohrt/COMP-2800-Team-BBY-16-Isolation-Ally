@@ -5,16 +5,22 @@ function login() {
     firebase.auth().signInWithEmailAndPassword(email, password).then(function () {
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
-                document.location.href = "menu.html";
+                if (db.collection("users").doc(user.uid).score == undefined) {
+                    let sc = db.collection("users").doc(user.uid);
+                    sc.set({
+                        email: user.email,
+                        score: 0
+                    });
+                }
+                loadMain();
             } else {
                 console.log("Enter you info");
             }
-        }).catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            alert(errorMessage);
-        })
+        });
+    }).catch(function (error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorMessage);
     });
 }
 
@@ -28,24 +34,21 @@ function register() {
             firebase.auth().onAuthStateChanged(function (user) {
                 if (user) {
                     db.collection("users").doc(user.uid).set({
-                        email: user.email
+                        email: user.email,
+                        score: 0
                     }).then(function () {
                         console.log("New user added to firestore");
                         $('#modal-signup').modal('hide');
-                        let sc = db.collection("users").doc(user.uid).collection("highScore").doc("score");
-                        sc.set({
-                            score: "0"
-                        });
-                        document.location.href = "menu.html";
-                    })
+                        loadMain();
+                    });
                 } else {
 
                 }
-            }).catch(function (error) {
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                alert(errorMessage);
             })
+        }).catch(function (error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            alert(errorMessage);
         });
     } else {
         alert("Your passwords don't match");
@@ -73,7 +76,19 @@ function loadGame() {
 
 //load leaderboard
 function loadLeaderboard() {
-    document.location.href = "leaderboard.html";
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection("users").doc(user.uid).get().then(doc => {
+                if (doc.data().username == undefined) {
+                    $("#modal-username").modal('show');
+                } else {
+                    document.location.href = "leaderboard.html";
+                }
+            });
+        } else {
+
+        }
+    });
 }
 
 //load achievement-list
@@ -91,10 +106,48 @@ function loadAbout() {
     document.location.href = "about-us.html";
 }
 
+//Loads the gameover page
 function loadGameOver() {
     document.location.href = "game-over.html";
 }
 
+//Loads easter egg
 function loadEaster() {
     document.location.href = "barrel-roll.html";
+}
+
+//Each loads a specific achievment page
+function loadAchievement1() {document.location.href = "achievement.html"}
+function loadAchievement2() {document.location.href = "achievement2.html"}
+function loadAchievement3() {document.location.href = "achievement3.html"}
+function loadAchievement4() {document.location.href = "achievement4.html"}
+
+//checks if the user has a username
+function checkUsername() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection("users").doc(user.uid).get().then(doc => {
+                if (doc.data().username == undefined) {
+                    $("#modal-username").modal('show');
+                }
+            });
+        } else {
+
+        }
+    });
+}
+
+//adds username to account
+function username() {
+    let j = document.getElementById("enterUsername").value;
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user) {
+            db.collection("users").doc(user.uid).update({
+                username: j
+            });
+        } else {
+
+        }
+    });
+    $("#modal-username").modal('hide');
 }

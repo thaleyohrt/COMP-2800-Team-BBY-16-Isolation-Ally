@@ -1,3 +1,4 @@
+// Initial game configuration
 let config = {
     type: Phaser.AUTO,
     width: WIDTH,
@@ -25,18 +26,23 @@ let game = new Phaser.Game(config);
 
 $("body").css("overflow", "hidden");
 
+//Preloads assets
 function preload() {
     this.load.image('road', 'images/Road-Background.png');
     loadPlayerAssets(this);
     loadEnemyAssets(this);
+    bgMusic.loop = true;
+    bgMusic.play();
+    finalScore = 0;
 }
 
+//Creates elements and edits those elements
 function create() {
     const FONT_SIZE = 40;
     const PAUSE_SIZE = 50;
     const TEXT_Y = 50;
     const PAUSE_X = 30;
-    const TEXT_WIDTH = 300;
+    const TEXT_WIDTH = 150;
     let textX = (w - TEXT_WIDTH) / 2;
 
     game.scale.resize(w, h);
@@ -45,27 +51,29 @@ function create() {
     addPlayer(this);
     this.pauseBtn = this.add.text(PAUSE_X, TEXT_Y, "", {
         fontSize: PAUSE_SIZE + "px",
-        color: "yellow"
+        color: "yellow",
     });
     pointer = game.input.activePointer;
     this.pauseBtn.setInteractive().on('pointerdown', function () {
         pauseChange();
     });
-    scoreText = this.add.text(textX, TEXT_Y, "Score: ", {
-        fontSize: FONT_SIZE + 'px'
+    scoreText = this.add.text(textX, TEXT_Y, "", {
+        fontSize: FONT_SIZE + 'px',
     });
 }
 
+//updates every set amount of frames
 function update() {
     const PLAY_UNICODE = "\u25B6";
     const PAUSE_UNICODE = "\u275A\u275A";
+    const PLAYER_SPEED = 2000;
     let button1 = document.getElementById("resume-button");
     let button2 = document.getElementById("menu-button");
 
     if (!checked) {
         if (!paused) {
             scoreValue++;
-            scoreText.setText("Score: " + (scoreValue / 10).toFixed(1) + "ft");
+            scoreText.setText((scoreValue / 10).toFixed(1) + "ft");
             this.pauseBtn.setText(PAUSE_UNICODE);
             back[1].y += speed;
             back[0].y += speed;
@@ -79,15 +87,17 @@ function update() {
             spawnEnemies(this);
             moveEnemies(enemyObjects);
             checkCollision(enemyObjects);
-            player.setMaxVelocity(500 + (scoreValue / 1)); //maximum speed at which the player changes lanes. Increases at the game progresses.
+            player.setMaxVelocity(PLAYER_SPEED);
 
             button1.style.display = "none";
             button2.style.display = "none";
 
             resumePlayer();
+            resumeEnemy();
         } else {
             this.pauseBtn.setText(PLAY_UNICODE);
             pausePlayer();
+            pauseEnemy();
 
             button1.style.display = "block";
             button2.style.display = "block";
@@ -111,24 +121,43 @@ function update() {
     }
 }
 
+//Pause button function
 function pauseChange() {
     paused = !paused;
+    if (paused) {
+        bgMusic.pause();
+    } else {
+        bgMusic.play();
+    }
 }
 
+//Checks if the user beat their previous highscore
 function highScore() {
+    localStorage.setItem("score", (scoreValue / 10))
     checked = true;
     firebase.auth().onAuthStateChanged(async user => {
         if (user) {
-            let snapshot = await db.collection("users").doc(user.uid).collection("highScore").doc("score").get();
-            if (parseInt((scoreValue / 10).toFixed(1)) > parseInt(snapshot.data().score)) {
-                db.collection("users").doc(user.uid).collection("highScore").doc("score").update({
-                    score: (scoreValue / 10).toFixed(1)
+            let snapshot = await db.collection("users").doc(user.uid).get();
+            if (parseInt(localStorage.getItem("score")) > snapshot.data().score) {
+                db.collection("users").doc(user.uid).update({
+                    score: parseInt(localStorage.getItem("score"))
                 }).then(function () {
-                    loadGameOver()
-                });
+                    setTimeout(function () {
+                        loadGameOver();
+                    }, 300);
+                })
             } else {
-                loadGameOver();
+                setTimeout(function () {
+                    loadGameOver();
+                }, 300);
             }
         }
     });
+}
+
+//Runs onload of the game-over screen to place the current score
+function current() {
+    document.getElementById("score").innerText = "Score: " + localStorage.getItem("score") + "ft";
+    let c = document.getElementById("tweet");
+    c.href = "https://twitter.com/intent/tweet?text=I%20just%20got%20" + localStorage.getItem("score") + "ft%20on%20Isolation%20Ally%20%28isolation-ally.site%29";
 }
