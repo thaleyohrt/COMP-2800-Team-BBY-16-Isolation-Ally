@@ -1,3 +1,4 @@
+//Loads enemy assets
 function loadEnemyAssets(main) {
 
     main.load.image('bonus1', 'images/hand-sanitizer.png')
@@ -26,6 +27,7 @@ function loadEnemyAssets(main) {
     nextSpawn = main.time.now + delay;
 }
 
+//Spawns enemies ever set amount of time
 function spawnEnemies(main) {
     let chance = Phaser.Math.Between(0, NUM_OF_ENEMIES + NUM_OF_BONUSES - 1);
     enemyToSpawn = enemies[chance];
@@ -34,6 +36,7 @@ function spawnEnemies(main) {
     }
 }
 
+//Spawns an enemy
 function spawnEnemy(main, chance) {
     let lane = Phaser.Math.Between(0, 2); //choses one of the tree lanes
     enemy = main.add.sprite(positionCoords[lane], -100, enemyToSpawn); //spawns enemy at the chosen lane
@@ -98,14 +101,17 @@ function spawnEnemy(main, chance) {
     enemyObjects.push(enemy);
 }
 
+//Pauses enemy animations
 function pauseEnemy() {
     enemy.anims.pause();
 }
 
+//Resumes enemy animations
 function resumeEnemy() {
     animations.resume();
 }
 
+//Moves enemies downwards
 function moveEnemies(allEnemies) {
     allEnemies.forEach(function (enemy) {
         if (enemy.y > window.innerHeight + 100) {
@@ -118,6 +124,7 @@ function moveEnemies(allEnemies) {
     })
 }
 
+//Checks if the player and enemy have collided
 function checkCollision(allEnemies) {
     allEnemies.forEach(function (enemy) {
         if ((enemy.y > (window.innerHeight / 1.1) - 90 && enemy.y < (window.innerHeight / 1.1) + 45) &&
@@ -141,6 +148,7 @@ function checkCollision(allEnemies) {
     })
 }
 
+//Delays the update function
 function updateDelay() {
     let del = 15;
     speed += 0.05;

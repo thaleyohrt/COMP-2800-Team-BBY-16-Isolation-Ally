@@ -1,3 +1,4 @@
+//Places the top players on the leaderboard
 async function leaderBoard() {
     const leaderboard = await readDatabase();
     let board = document.getElementById("leaders");
@@ -32,6 +33,7 @@ async function leaderBoard() {
     });
 }
 
+//Reads the database for the top players
 const readDatabase = async function () {
     let leaderboard = [];
     let j = await db.collection('users').where("score", ">", 0).orderBy('score').limit(10).get().then(snapshot => {

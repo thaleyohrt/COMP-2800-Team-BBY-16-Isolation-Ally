@@ -25,6 +25,7 @@ let game = new Phaser.Game(config);
 
 $("body").css("overflow", "hidden");
 
+//Preloads assets
 function preload() {
     this.load.image('road', 'images/Road-Background.png');
     loadPlayerAssets(this);
@@ -34,6 +35,7 @@ function preload() {
     finalScore = 0;
 }
 
+//Creates elements and edits those elements
 function create() {
     const FONT_SIZE = 40;
     const PAUSE_SIZE = 50;
@@ -59,6 +61,7 @@ function create() {
     });
 }
 
+//updates every set amount of frames
 function update() {
     const PLAY_UNICODE = "\u25B6";
     const PAUSE_UNICODE = "\u275A\u275A";
@@ -117,6 +120,7 @@ function update() {
     }
 }
 
+//Pause button function
 function pauseChange() {
     paused = !paused;
     if (paused) {
@@ -126,6 +130,7 @@ function pauseChange() {
     }
 }
 
+//Checks if the user beat their previous highscore
 function highScore() {
     localStorage.setItem("score", (scoreValue / 10))
     checked = true;
@@ -149,6 +154,7 @@ function highScore() {
     });
 }
 
+//Runs onload of the game-over screen to place the current score
 function current() {
     document.getElementById("score").innerText = "Score: " + localStorage.getItem("score") + "ft";
     let c = document.getElementById("tweet");
