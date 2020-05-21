@@ -159,5 +159,5 @@ function highScore() {
 function current() {
     document.getElementById("score").innerText = "Score: " + localStorage.getItem("score") + "ft";
     let c = document.getElementById("tweet");
-    c.href = "https://twitter.com/intent/tweet?text=I%20just%20got%20" + localStorage.getItem("score") + "ft,%20on%20isolation-ally.site";
+    c.href = "https://twitter.com/intent/tweet?text=I%20just%20got%20" + localStorage.getItem("score") + "ft%20on%20Isolation%20Ally%20%28isolation-ally.site%29";
 }
