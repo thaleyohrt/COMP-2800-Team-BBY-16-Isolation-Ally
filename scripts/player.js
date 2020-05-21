@@ -118,7 +118,7 @@ function moveLeft() {
     }
 }
 
-//Moves player left
+//Moves player right
 function moveRight() {
     if (!gameOver && !paused) {
         lastPressed = RIGHT;

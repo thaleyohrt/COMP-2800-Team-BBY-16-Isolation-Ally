@@ -1,3 +1,4 @@
+// Initial game configuration
 let config = {
     type: Phaser.AUTO,
     width: WIDTH,
