@@ -106,13 +106,17 @@ function loadAbout() {
     document.location.href = "about-us.html";
 }
 
+//Loads the gameover page
 function loadGameOver() {
     document.location.href = "game-over.html";
 }
 
+//Loads easter egg
 function loadEaster() {
     document.location.href = "barrel-roll.html";
 }
+
+//Each loads a specific achievment page
 function loadAchievement1() {document.location.href = "achievement.html"}
 function loadAchievement2() {document.location.href = "achievement2.html"}
 function loadAchievement3() {document.location.href = "achievement3.html"}

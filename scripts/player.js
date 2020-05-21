@@ -1,3 +1,4 @@
+//Loads the player asset
 function loadPlayerAssets(main) {
     main.load.spritesheet('player', 'images/player.png', {
         frameWidth: 322,
@@ -5,6 +6,7 @@ function loadPlayerAssets(main) {
     });
 }
 
+//Adds a player
 function addPlayer(main) {
     player = main.physics.add.sprite((window.innerWidth / 2), (window.innerHeight / 1.1), 'player');
     animations = main.anims.create({
@@ -21,14 +23,17 @@ function addPlayer(main) {
     player.anims.play("player_anim");
 }
 
+//Pauses the player animation
 function pausePlayer() {
     player.anims.pause();
 }
 
+//Resumes the player animation
 function resumePlayer() {
     player.anims.resume();
 }
 
+//Adds movement to the player
 function addMovement(main) {
     let downX; 
     let upX;
@@ -88,10 +93,12 @@ function addMovement(main) {
     });
 }
 
+//Check the button last pressed
 function getLastPressed() {
     return lastPressed;
 }
 
+//Moves player left
 function moveLeft() {
     if (!gameOver && !paused) {
         lastPressed = LEFT;
@@ -111,6 +118,7 @@ function moveLeft() {
     }
 }
 
+//Moves player left
 function moveRight() {
     if (!gameOver && !paused) {
         lastPressed = RIGHT;
@@ -130,6 +138,7 @@ function moveRight() {
     }
 }
 
+//Checks if the player presses up
 function moveUp() {
     if (barrelRoll == 0) {
         barrelRoll++;
@@ -140,6 +149,7 @@ function moveUp() {
     }
 }
 
+//Checks if the player presses down
 function moveDown() {
     if (barrelRoll == 2) {
         barrelRoll++;
