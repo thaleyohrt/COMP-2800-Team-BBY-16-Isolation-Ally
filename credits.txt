@@ -1,0 +1,15 @@
+Sound
+Background music: https://www.youtube.com/watch?v=Ilwg0YzO6CM
+Movement sound effect: https://www.youtube.com/watch?v=EFY9TX2Fghg
+Easter egg: https://www.youtube.com/watch?v=psc_A0bUgSQ
+Collect bonus: https://www.youtube.com/watch?v=4zfd5IRh12c
+Enemy collision: https://www.youtube.com/watch?v=kkDMz2ml0gw
+
+Graphics
+Background road: https://www.cgbookcase.com/textures/three-lane-road-clean-01
+Player Sprite Sheet: https://pixelation.org/index.php?topic=24398.0
+Enemy sprites based on the player sprites
+Hand Sanitizer: https://www.flaticon.com/free-icon/hand-sanitizer_1906736
+Wash Your Hands Clip Art: https://www.gograph.com/vector-clip-art/wash-your-hands.html
+Jogging man: https://www.k5learning.com/worksheets/math/grade-5-word-problems-adding-subtracting-fractions-c.pdf
+Cough Or Sneeze Into Elbow Illustration: https://www.istockphoto.com/ca/illustrations/cough-or-sneeze-into-elbow?mediatype=illustration&phrase=cough%20or%20sneeze%20into%20elbow&sort=mostpopular
